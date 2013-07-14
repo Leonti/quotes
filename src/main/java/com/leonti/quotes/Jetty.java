@@ -25,7 +25,7 @@ public class Jetty {
 		
 		context.addFilter(GuiceFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
 		
-		ResourceCollection resources = new ResourceCollection(new String[] { "src/main/ui" });
+		ResourceCollection resources = new ResourceCollection(new String[] { "src/main/ui/app" });
 
 		context.setBaseResource(resources);
 		context.setInitParameter("cacheControl", "no-store,no-cache,must-revalidate");
