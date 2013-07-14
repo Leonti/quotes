@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.github.slugify.Slugify;
 import com.google.common.collect.Lists;
 import com.leonti.quotes.persistence.Quote;
 import com.mongodb.BasicDBList;
@@ -66,7 +67,7 @@ public class QuoteDao implements Dao<Quote> {
 		
 		BasicDBList tags = new BasicDBList();
 		for (String tag : quote.getTags()) {
-			tags.add(new BasicDBObject("name", tag).append("slug", getTagSlug(tag)));
+			tags.add(new BasicDBObject("name", tag).append("slug", toSlug(tag)));
 		}
 		
 		DBObject dbObject = MongoUtils.toPrimaryKey(id)
@@ -98,9 +99,8 @@ public class QuoteDao implements Dao<Quote> {
 		return MongoUtils.readEntities(quotes, new BasicDBObject("$and", query), toEntity);
 	}
 	
-	// FIXME - implement real cleaning up
-	public String getTagSlug(String tag) {
-		return tag.toLowerCase();
+	public String toSlug(String tag) {
+		return Slugify.slugify(tag);
 	}
 	
 	private long nextId() {

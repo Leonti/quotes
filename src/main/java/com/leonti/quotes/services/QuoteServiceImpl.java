@@ -61,5 +61,10 @@ public class QuoteServiceImpl implements QuoteService {
 	
 	private Quote getRandomQuote(List<Quote> quotes) {
 		return quotes.get(random.nextInt(quotes.size()));
+	}
+
+	@Override
+	public String toSlug(String original) {
+		return quoteDao.toSlug(original);
 	}	
 }

@@ -133,6 +133,13 @@
 			<artifactId>mongo-java-driver</artifactId>
 			<version>${mongo.version}</version>
 		</dependency>
+
+		<!-- Slugify -->
+		<dependency>
+			<groupId>com.github.slugify</groupId>
+			<artifactId>slugify</artifactId>
+			<version>1.0-RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>

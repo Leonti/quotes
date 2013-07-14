@@ -21,5 +21,6 @@ public interface QuoteService {
 	Quote getRandomQuoteForTags(List<String> toHave, List<String> toNotHave);
 
 	Quote getRandomQuoteForTags(List<String> toHave);
-
+	
+	String toSlug(String original);
 }
