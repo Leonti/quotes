@@ -1,0 +1,23 @@
+<div class="row-fluid">
+	<div class="offset4 span4">
+		<div class="page-header">
+			<h1>Add your quote!</h1>
+		</div>
+		<div class="hero-unit">
+			<form novalidate name="form">			
+				<label>Who:</label>
+				<input type="text" data-ng-model="quote.who" required placeholder="Who is the author of the quote?" class="span12" />
+				<label>When:</label>
+				<div class="control-group input-append">
+				<input type="text" data-bs-datepicker data-ng-model="quote.when" required placeholder="When it was said?" />
+				<button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+				</div>
+				<label>What:</label>
+				<textarea rows = "5" data-ng-model="quote.what" required placeholder="The quote" class="span12"></textarea>
+				<br><br><br>
+				<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addQuote()"
+				data-ng-disabled="form.$invalid">Add quote</button>		
+			</form>
+		</div>		
+	</div>
+</div>

@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: QuoteFormCtrl', function () {
 
   // load the controller's module
   beforeEach(module('uiApp'));
 
-  var MainCtrl,
+  var QuoteFormCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    QuoteFormCtrl = $controller('QuoteFormCtrl', {
       $scope: scope
     });
   }));

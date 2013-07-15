@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('uiApp', [])
+angular.module('uiApp', ['$strap.directives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/quote-form.html',
+        controller: 'QuoteFormCtrl'
       })
       .otherwise({
         redirectTo: '/'

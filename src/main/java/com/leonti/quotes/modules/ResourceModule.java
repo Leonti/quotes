@@ -3,6 +3,7 @@ package com.leonti.quotes.modules;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
+import com.leonti.quotes.CorsFilter;
 import com.leonti.quotes.resources.QuoteResourceImpl;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.guice.JerseyServletModule;
@@ -19,6 +20,8 @@ public class ResourceModule extends JerseyServletModule {
 		params.put(JSONConfiguration.FEATURE_POJO_MAPPING, "true");
 		
 		serve("/rest/*").with(GuiceContainer.class, params);
+		
+		filter("/*").through(CorsFilter.class);
 	}
 
 }

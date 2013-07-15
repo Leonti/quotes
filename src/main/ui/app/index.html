@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="components/bootstrap/docs/assets/css/bootstrap.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link href="components/angular-strap/vendor/bootstrap-datepicker.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
   <body ng-app="uiApp">
@@ -25,24 +26,39 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+<div id="quote"></div>
     <!-- Add your site or application content here -->
-    <div class="container" ng-view></div>
+    <div class="container-fluid" ng-view></div>
 
+
+	<script src="components/jquery/jquery.js"></script>
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>  
+    
+	<script src="components/bootstrap/docs/assets/js/bootstrap.js"></script>
+	<script src="components/angular-strap/vendor/bootstrap-datepicker.js"></script>      
+    <script src="components/angular-strap/dist/angular-strap.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/QuoteForm.js"></script>
+    <script src="scripts/services/Quote.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+//       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+//       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+//       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+//       s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    
+    <script>
+    var _quoteElement = document.getElementById('quote');
+	 (function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	 q.src='//localhost:9000/client.js';
+	 s.parentNode.insertBefore(q,s)}(document,'script'));    
     </script>
   </body>
 </html>
