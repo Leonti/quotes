@@ -7,4 +7,8 @@ angular.module('uiApp')
 		  console.log($scope.quote);
 		  console.log($scope.quote.when.getTime() / 1000);
 	  };
+	  
+	  $('.tags').tagsManager({
+		  tagClass: 'tm-tag-info'
+	  });
   });

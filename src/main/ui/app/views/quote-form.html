@@ -14,7 +14,9 @@
 				</div>
 				<label>What:</label>
 				<textarea rows = "5" data-ng-model="quote.what" required placeholder="The quote" class="span12"></textarea>
-				<br><br><br>
+				<label>Tags:</label>
+				<input type="text" data-ng-model="quote.tags" placeholder="pretentious, funny, deep" value="hello" name="tags" class="tags" />
+				<br>
 				<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addQuote()"
 				data-ng-disabled="form.$invalid">Add quote</button>		
 			</form>

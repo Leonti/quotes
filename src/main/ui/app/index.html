@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="components/bootstrap/docs/assets/css/bootstrap.css">
     <link rel="stylesheet" href="styles/main.css">
     <link href="components/angular-strap/vendor/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="components/tagmanager/bootstrap-tagmanager.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
   <body ng-app="uiApp">
@@ -40,6 +41,8 @@
 	<script src="components/angular-strap/vendor/bootstrap-datepicker.js"></script>      
     <script src="components/angular-strap/dist/angular-strap.js"></script>
 
+	<script src="components/tagmanager/bootstrap-tagmanager.js"></script>
+
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/QuoteForm.js"></script>
@@ -55,7 +58,13 @@
     </script>
     
     <script>
-    var _quoteElement = document.getElementById('quote');
+    
+    var _quote = {
+    	element: document.getElementById('quote'),
+    	tags: 'leonti',
+    	excludedTags: 'unfunny'
+    };
+ 
 	 (function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	 q.src='//localhost:9000/client.js';
 	 s.parentNode.insertBefore(q,s)}(document,'script'));    
