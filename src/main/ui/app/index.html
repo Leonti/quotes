@@ -43,31 +43,28 @@
 
 	<script src="components/tagmanager/bootstrap-tagmanager.js"></script>
 
+	<script src="components/lodash/dist/lodash.js"></script>	
+	<script src="components/restangular/dist/restangular.js"></script>
+
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/QuoteForm.js"></script>
     <script src="scripts/services/Quote.js"></script>
+    <script src="scripts/directives/tagsmanager.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-//       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-//       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-//       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-//       s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
     
     <script>
-    
-    var _quote = {
-    	element: document.getElementById('quote'),
-    	tags: 'leonti',
-    	excludedTags: 'unfunny'
-    };
+	    var _quote = {
+	    	element: document.getElementById('quote'),
+	    	tags: 'leonti',
+	    	excludedTags: 'unfunny'
+	    };
  
-	 (function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
-	 q.src='//localhost:9000/client.js';
-	 s.parentNode.insertBefore(q,s)}(document,'script'));    
+		(function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		q.src='//localhost2:9000/client.js';
+		q.id='_quote';
+		s.parentNode.insertBefore(q,s)}(document,'script'));    
     </script>
   </body>
 </html>

@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('uiApp')
-  .factory('Quote', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
+  .factory('Quote', ['Restangular', function (Restangular) {  
+	  
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+    	random: function() {
+    		return Restangular.all('quote').doGET();
+    	},
+    	
+		create: function(quote) {
+			return Restangular.all('quote').post(quote);
+		}
     };
-  });
+  }]);

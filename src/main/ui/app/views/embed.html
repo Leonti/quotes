@@ -1,0 +1,35 @@
+<div class="row-fluid">
+	<div class="offset3 span6">
+	{{quote.who}}
+	<pre>	
+&lt;script&gt;	    
+var _quote = {
+	element: document.getElementById('quote'),
+	id: {{ quote.id }}
+};
+
+(function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
+q.src='//{{baseUrl}}/client.js';
+q.id='_quote';
+s.parentNode.insertBefore(q,s)}(document,'script'));
+&lt;/script&gt;       
+	</pre>
+	
+	<pre> 
+&lt;script&gt;		 
+var _quote = {
+	element: document.getElementById('quote'),
+	tags: 'leonti',
+	excludedTags: 'unfunny'
+};
+
+(function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
+q.src='//{{baseUrl}}/client.js';
+q.id='_quote';
+s.parentNode.insertBefore(q,s)}(document,'script'));  
+&lt;/script&gt;     
+	</pre>
+	
+		
+	</div>
+</div>	
