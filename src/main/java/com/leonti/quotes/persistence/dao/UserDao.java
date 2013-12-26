@@ -23,21 +23,22 @@ public class UserDao implements Dao<User, String> {
 
 			@Override
 			public User convert(DBObject dbObject) {
-				return new User((String) dbObject.get("email"),
-						(String) dbObject.get("hash"),
+				return new User(
+						MongoUtils.toStringId(dbObject),
+						(String) dbObject.get("email"),
 						(Long) dbObject.get("registered"));
 			}
 		};
 	}
 
-	public User readByHash(String hash) {
-		return MongoUtils.readEntity(users, MongoUtils.toFieldKey("hash", hash),
+	public User readByEmail(String email) {
+		return MongoUtils.readEntity(users, MongoUtils.toFieldKey("email", email),
 				toEntity);		
 	}
 	
 	@Override
-	public User read(String email) {
-		return MongoUtils.readEntity(users, MongoUtils.toPrimaryKey(email),
+	public User read(String id) {
+		return MongoUtils.readEntity(users, MongoUtils.toPrimaryKey(id),
 				toEntity);
 	}
 
@@ -49,9 +50,8 @@ public class UserDao implements Dao<User, String> {
 	@Override
 	public User save(User user) {
 
-		DBObject dbObject = MongoUtils.toPrimaryKey(user.getEmail())
+		DBObject dbObject = MongoUtils.toPrimaryKey(emailToHash(user.getEmail()))
 				.append("email", user.getEmail())
-				.append("hash", emailToHash(user.getEmail()))
 				.append("registered", user.getRegistered());
 
 		this.users.save(dbObject);

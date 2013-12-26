@@ -6,8 +6,8 @@ public interface UserService {
 
 	User create(String email);
 
-	User read(String email);
+	User read(String id);
 	
-	User readByHash(String hash);
+	User readByEmail(String email);
 	
 }

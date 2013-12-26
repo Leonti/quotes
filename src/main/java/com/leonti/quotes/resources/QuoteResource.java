@@ -1,7 +1,5 @@
 package com.leonti.quotes.resources;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -40,21 +38,5 @@ public interface QuoteResource {
 	public void removeQuote(@PathParam("id") long id);	
 	
 	@GET
-	@Path("tags/include/{included}/exclude/{excluded}")
-	public List<Quote> getQuotesForTags(@PathParam("included") String included, @PathParam("excluded") String excluded);
-
-	@GET
-	@Path("tags/include/{included}")
-	public List<Quote> getQuotesForTags(@PathParam("included") String included);	
-	
-	@GET
 	public Quote getRandomQuote();
-	
-	@GET
-	@Path("random/tags/include/{included}/exclude/{excluded}")
-	public Quote getRandomQuoteForTags(@PathParam("included") String included, @PathParam("excluded") String excluded);	
-
-	@GET
-	@Path("random/tags/include/{included}")
-	public Quote getRandomQuoteForTags(@PathParam("included") String included);
 }

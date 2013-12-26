@@ -7,28 +7,28 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Widget {
 	
-	public enum Type {
-		SINGLE_QUOTE,
+	public static enum Type {
+		IDS,
 		TAGS
 	}
 	
 	private final Long id;
-	private final String email;
+	private final String userId;
 	private final Type type;
-	private final Long quoteId;
+	private final List<Long> quoteIds;
 	private final List<String> tags;
 	
 	@JsonCreator
 	public Widget(
 			@JsonProperty("id") Long id, 
-			@JsonProperty("email") String email, 
+			@JsonProperty("userId") String userId, 
 			@JsonProperty("type") Type type, 
-			@JsonProperty("quoteId") Long quoteId,
+			@JsonProperty("quoteIds") List<Long> quoteIds,
 			@JsonProperty("tags") List<String> tags) {
 		this.id = id;
-		this.email = email;
+		this.userId = userId;
 		this.type = type;
-		this.quoteId = quoteId;
+		this.quoteIds = quoteIds;
 		this.tags = tags;
 	}
 
@@ -36,19 +36,37 @@ public class Widget {
 		return id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUserId() {
+		return userId;
 	}
 
 	public Type getType() {
 		return type;
 	}
 
-	public Long getQuoteId() {
-		return quoteId;
+	public List<Long> getQuoteIds() {
+		return quoteIds;
 	}
 
 	public List<String> getTags() {
 		return tags;
+	}
+	
+	@Override
+	public String toString() {
+		String toString = id + " " + type + ": \"" + tags + "\", tags: [ ";
+		
+		for (String tag : tags) {
+			toString += tag + " ";
+		}
+		
+		toString += "], ids: [ ";
+		
+		for (Long quoteId : quoteIds) {
+			toString += quoteId + " ";
+		}
+		
+		toString += "]";
+		return toString;
 	}	
 }

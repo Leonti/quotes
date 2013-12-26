@@ -12,17 +12,11 @@ public interface QuoteService {
 
 	Quote read(long id);
 
-	List<Quote> getQuotesForTags(List<String> toHave, List<String> toNotHave);
-
-	List<Quote> getQuotesForTags(List<String> toHave);
+	List<Quote> getQuotesForTags(List<String> tags);
 
 	Quote getRandomQuote();
 
-	Quote getRandomQuoteForTags(List<String> toHave, List<String> toNotHave);
-
-	Quote getRandomQuoteForTags(List<String> toHave);
+	Quote getRandomQuoteForTags(List<String> tags);
 	
-	String toSlug(String original);
-
 	void remove(long id);
 }

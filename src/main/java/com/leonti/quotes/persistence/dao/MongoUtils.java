@@ -31,6 +31,10 @@ public class MongoUtils {
 		return (Long) dbObject.get("_id");
 	}
 
+	public static String toStringId(DBObject dbObject) {
+		return (String) dbObject.get("_id");
+	}	
+	
 	public static <E> E readEntity(DBCollection collection,
 			BasicDBObject primaryKey, ToEntity<E> toEntity) {
 		DBObject result = collection.findOne(primaryKey);

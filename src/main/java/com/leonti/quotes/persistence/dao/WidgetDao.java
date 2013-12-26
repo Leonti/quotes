@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.github.slugify.Slugify;
 import com.google.common.collect.Lists;
 import com.leonti.quotes.model.Widget;
 import com.mongodb.BasicDBList;
-import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -33,15 +31,21 @@ public class WidgetDao implements Dao<Widget, Long> {
 				BasicDBList tagDbObjects = (BasicDBList) dbObject.get("tags");
 				
 				for (int i = 0; i < tagDbObjects.size(); i++) {
-					DBObject tagDbObject = (BasicDBObject) tagDbObjects.get(i);
-					tags.add((String) tagDbObject.get("name"));
+					tags.add((String) tagDbObjects.get(i));
 				}
+				
+				List<Long> quoteIds = Lists.newLinkedList();
+				BasicDBList quoteIdsDbObjects = (BasicDBList) dbObject.get("quoteIds");
+				
+				for (int i = 0; i < quoteIdsDbObjects.size(); i++) {
+					quoteIds.add((Long) quoteIdsDbObjects.get(i));
+				}				
 				
 				return new Widget(
 						MongoUtils.toId(dbObject),
 						(String) dbObject.get("email"),
-						(Widget.Type) dbObject.get("type"),
-						(Long) dbObject.get("quoteId"),
+						Widget.Type.valueOf((String) dbObject.get("type")),
+						quoteIds,
 						tags
 						);
 			}
@@ -67,16 +71,11 @@ public class WidgetDao implements Dao<Widget, Long> {
 	public Widget save(Widget widget) {
 		long id = widget.getId() == null ? nextId() : widget.getId();
 		
-		BasicDBList tags = new BasicDBList();
-		for (String tag : widget.getTags()) {
-			tags.add(new BasicDBObject("name", tag).append("slug", toSlug(tag)));
-		}
-		
 		DBObject dbObject = MongoUtils.toPrimaryKey(id)
-				.append("email", widget.getEmail())
-				.append("type", widget.getType())
-				.append("quoteId", widget.getQuoteId())
-				.append("tags", tags);
+				.append("email", widget.getUserId())
+				.append("type", widget.getType().name())
+				.append("quoteIds", widget.getQuoteIds())
+				.append("tags", widget.getTags());
 		
 		this.widgets.save(dbObject);
 		
@@ -86,10 +85,6 @@ public class WidgetDao implements Dao<Widget, Long> {
 	@Override
 	public void remove(Long id) {
 		MongoUtils.removeEntity(widgets, MongoUtils.toPrimaryKey(id));
-	}	
-	
-	public String toSlug(String tag) {
-		return Slugify.slugify(tag);
 	}	
 	
 	private long nextId() {

@@ -35,13 +35,8 @@ public class QuoteServiceImpl implements QuoteService {
 	}
 
 	@Override
-	public List<Quote> getQuotesForTags(List<String> toHave, List<String> toNotHave) {
-		return quoteDao.getQuotesForTags(toHave, toNotHave);
-	}
-
-	@Override
-	public List<Quote> getQuotesForTags(List<String> toHave) {
-		return quoteDao.getQuotesForTags(toHave);
+	public List<Quote> getQuotesForTags(List<String> tags) {
+		return quoteDao.getQuotesForTags(tags);
 	}
 
 	@Override
@@ -50,22 +45,12 @@ public class QuoteServiceImpl implements QuoteService {
 	}
 
 	@Override
-	public Quote getRandomQuoteForTags(List<String> toHave, List<String> toNotHave) {
-		return getRandomQuote(quoteDao.getQuotesForTags(toHave, toNotHave));
-	}
-
-	@Override
-	public Quote getRandomQuoteForTags(List<String> toHave) {
-		return getRandomQuote(quoteDao.getQuotesForTags(toHave));
+	public Quote getRandomQuoteForTags(List<String> tags) {
+		return getRandomQuote(quoteDao.getQuotesForTags(tags));
 	}
 	
 	private Quote getRandomQuote(List<Quote> quotes) {
 		return quotes.get(random.nextInt(quotes.size()));
-	}
-
-	@Override
-	public String toSlug(String original) {
-		return quoteDao.toSlug(original);
 	}
 
 	@Override

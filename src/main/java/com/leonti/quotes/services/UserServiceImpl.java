@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService {
 		this.userDao = userDao;
 	}
 	
-	
 	@Override
 	public User create(String email) {
 		return userDao.create(email);
@@ -26,8 +25,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User readByHash(String hash) {
-		return userDao.readByHash(hash);
+	public User readByEmail(String email) {
+		return userDao.readByEmail(email);
 	}
 
 }

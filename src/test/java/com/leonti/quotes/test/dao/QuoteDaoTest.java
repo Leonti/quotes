@@ -21,16 +21,20 @@ public class QuoteDaoTest {
 		tags.add("Leonti");
 		tags.add("unfunny");
 		
-		Quote quote = new Quote(null, "Leonti", "Hello, world!", System.currentTimeMillis(), null, tags);
+		Quote quote = new Quote(null, "asfgvjabcfiuy", "Leonti", "Hello, world!", System.currentTimeMillis(), null, tags);
 		Quote read = quoteDao.save(quote);
 		
-		System.out.println(read.getId());
-		System.out.println(read.getWhat());
-		List<String> toHaveSlugs = Lists.newLinkedList();
-		toHaveSlugs.add("funny");
-		List<String> toNotHaveSlugs = Lists.newLinkedList();
-		toNotHaveSlugs.add("leonti");		
-		System.out.println(quoteDao.getQuotesForTags(toHaveSlugs, toNotHaveSlugs).size());
+		System.out.println(read);
+		System.out.println(quoteDao.getQuotesForTags(tags).size());
+	}
+	
+	@Test
+	public void getAlltags() {
+		CounterDao counterDao = new CounterDao(TestDaoBase.getMongoDB());
+		
+		QuoteDao quoteDao = new QuoteDao(TestDaoBase.getMongoDB(), counterDao);
+		
+		System.out.println(quoteDao.getAllTags());
 	}
 
 }
