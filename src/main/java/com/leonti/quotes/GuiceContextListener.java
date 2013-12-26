@@ -22,15 +22,7 @@ public class GuiceContextListener extends GuiceServletContextListener {
     @Override
     public void contextInitialized(final ServletContextEvent servletContextEvent) {
 
-           // log.info("guice context initialized");
-
-         //   UserSessionTracker userSessionListener = new UserSessionTracker();
-
             this.injector = Guice.createInjector(getModules(servletContextEvent));
-
-
-         //   registerHttpSessionListener(servletContextEvent);
-
             super.contextInitialized(servletContextEvent);
     }
 	
