@@ -8,11 +8,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
 import com.google.common.collect.Lists;
-import com.leonti.quotes.persistence.Quote;
+import com.leonti.quotes.model.Quote;
 import com.leonti.quotes.services.QuoteService;
 
 public class QuoteResourceImpl implements QuoteResource {
-
 	
 	private final QuoteService quoteService;
 
@@ -70,6 +69,11 @@ public class QuoteResourceImpl implements QuoteResource {
 		List<String> list = Lists.newArrayList(listAsString.split(","));
 		
 		return list;
+	}
+
+	@Override
+	public void removeQuote(long id) {
+		quoteService.remove(id);
 	}
 
 }

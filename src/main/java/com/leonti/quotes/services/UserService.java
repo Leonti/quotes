@@ -1,6 +1,6 @@
 package com.leonti.quotes.services;
 
-import com.leonti.quotes.persistence.User;
+import com.leonti.quotes.model.User;
 
 public interface UserService {
 

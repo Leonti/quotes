@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
-import com.leonti.quotes.persistence.Quote;
+import com.leonti.quotes.model.Quote;
 import com.leonti.quotes.persistence.dao.CounterDao;
 import com.leonti.quotes.persistence.dao.QuoteDao;
 

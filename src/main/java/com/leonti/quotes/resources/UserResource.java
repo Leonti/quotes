@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.leonti.quotes.persistence.User;
+import com.leonti.quotes.model.User;
 
 @Path("user")
 @Consumes(MediaType.APPLICATION_JSON)

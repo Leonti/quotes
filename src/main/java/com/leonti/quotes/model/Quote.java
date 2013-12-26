@@ -1,4 +1,4 @@
-package com.leonti.quotes.persistence;
+package com.leonti.quotes.model;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Quote {
 
-	private Long id;
+	private final Long id;
 	private final String who;
 	private final String what;
 	private final Long when;

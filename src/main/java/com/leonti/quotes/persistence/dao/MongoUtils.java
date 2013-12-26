@@ -68,5 +68,9 @@ public class MongoUtils {
 		}
 
 		return result;
+	}
+
+	public static void removeEntity(DBCollection collection, BasicDBObject query) {
+		collection.remove(query);
 	}	
 }

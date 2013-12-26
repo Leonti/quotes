@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.github.slugify.Slugify;
 import com.google.common.collect.Lists;
-import com.leonti.quotes.persistence.Quote;
+import com.leonti.quotes.model.Quote;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -81,6 +81,11 @@ public class QuoteDao implements Dao<Quote, Long> {
 		
 		return read(id);
 	}
+
+	@Override
+	public void remove(Long id) {
+		MongoUtils.removeEntity(quotes, MongoUtils.toPrimaryKey(id));
+	}	
 	
 	public List<Quote> getQuotesForTags(List<String> toHaveSlugs) {
 		return getQuotesForTags(toHaveSlugs, new LinkedList<String>());
@@ -106,4 +111,5 @@ public class QuoteDao implements Dao<Quote, Long> {
 	private long nextId() {
 		return counterDao.next("quote");
 	}
+
 }

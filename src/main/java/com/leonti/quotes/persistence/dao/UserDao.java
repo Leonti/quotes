@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.leonti.quotes.persistence.User;
+import com.leonti.quotes.model.User;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -57,6 +57,11 @@ public class UserDao implements Dao<User, String> {
 		this.users.save(dbObject);
 		return user;
 	}
+
+	@Override
+	public void remove(String email) {
+		MongoUtils.removeEntity(users, MongoUtils.toPrimaryKey(email));
+	}	
 	
 	public User create(String email) {
 		return save(new User(email, emailToHash(email), System.currentTimeMillis()));

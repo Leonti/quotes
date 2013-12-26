@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.inject.Inject;
 
-import com.leonti.quotes.persistence.Quote;
+import com.leonti.quotes.model.Quote;
 import com.leonti.quotes.persistence.dao.QuoteDao;
 
 public class QuoteServiceImpl implements QuoteService {
@@ -66,5 +66,10 @@ public class QuoteServiceImpl implements QuoteService {
 	@Override
 	public String toSlug(String original) {
 		return quoteDao.toSlug(original);
+	}
+
+	@Override
+	public void remove(long id) {
+		quoteDao.remove(id);
 	}	
 }

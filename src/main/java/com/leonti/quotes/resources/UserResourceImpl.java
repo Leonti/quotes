@@ -9,7 +9,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 
 import com.leonti.quotes.auth.PersonaToken;
-import com.leonti.quotes.persistence.User;
+import com.leonti.quotes.model.User;
 import com.leonti.quotes.services.UserService;
 
 public class UserResourceImpl implements UserResource {

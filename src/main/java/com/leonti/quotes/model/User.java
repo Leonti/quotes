@@ -1,4 +1,4 @@
-package com.leonti.quotes.persistence;
+package com.leonti.quotes.model;
 
 public class User {
 

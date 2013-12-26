@@ -2,7 +2,7 @@ package com.leonti.quotes.services;
 
 import javax.inject.Inject;
 
-import com.leonti.quotes.persistence.User;
+import com.leonti.quotes.model.User;
 import com.leonti.quotes.persistence.dao.UserDao;
 
 public class UserServiceImpl implements UserService {

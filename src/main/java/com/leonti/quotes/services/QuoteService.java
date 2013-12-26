@@ -2,7 +2,7 @@ package com.leonti.quotes.services;
 
 import java.util.List;
 
-import com.leonti.quotes.persistence.Quote;
+import com.leonti.quotes.model.Quote;
 
 public interface QuoteService {
 
@@ -23,4 +23,6 @@ public interface QuoteService {
 	Quote getRandomQuoteForTags(List<String> toHave);
 	
 	String toSlug(String original);
+
+	void remove(long id);
 }
