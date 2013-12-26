@@ -9,6 +9,17 @@ angular.module('uiApp').controller('MainCtrl', ['$scope', '$window', function ($
 	
 	$scope.$on('quoteCreated', function(event, quote) {
 		$scope.quote = quote;
+		
+		if ($scope.quote.tags.length > 0) {
+			$scope.tagsAsString = '';
+			
+			_.each($scope.quote.tags, function(tag) {
+				$scope.tagsAsString += tag + ', ';					
+			});
+			
+			$scope.tagsAsString = $scope.tagsAsString.substring(0, $scope.tagsAsString.length - 2);
+		}
+		
 		console.log($scope.quote);
 	});
 	

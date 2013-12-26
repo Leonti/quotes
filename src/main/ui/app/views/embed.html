@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="offset3 span6">
-	{{quote.who}}
+	<h5>Include this snippet in your page to display this exact quote</h5>
 	<pre>	
 &lt;script&gt;	    
 var _quote = {
@@ -14,13 +14,17 @@ q.id='_quote';
 s.parentNode.insertBefore(q,s)}(document,'script'));
 &lt;/script&gt;       
 	</pre>
-	
-	<pre> 
+	</div>
+</div>
+
+<div class="row-fluid">	
+	<div class="offset3 span6">
+	<h5>Include this snippet in your page to display random quote with these tags</h5>
+	<pre ng-show="quote.tags.length > 0"> 
 &lt;script&gt;		 
 var _quote = {
 	element: document.getElementById('quote'),
-	tags: 'leonti',
-	excludedTags: 'unfunny'
+	tags: '{{ tagsAsString }}'
 };
 
 (function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -28,8 +32,6 @@ q.src='//{{baseUrl}}/client.js';
 q.id='_quote';
 s.parentNode.insertBefore(q,s)}(document,'script'));  
 &lt;/script&gt;     
-	</pre>
-	
-		
+	</pre>		
 	</div>
 </div>	
