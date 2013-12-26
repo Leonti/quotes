@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 import com.google.common.collect.Lists;
 import com.leonti.quotes.persistence.Quote;
 import com.leonti.quotes.services.QuoteService;
@@ -45,6 +48,11 @@ public class QuoteResourceImpl implements QuoteResource {
 
 	@Override
 	public Quote getRandomQuote() {
+		
+		Subject currentUser = SecurityUtils.getSubject();
+		
+		System.out.println(currentUser.isRemembered());
+		
 		return quoteService.getRandomQuote();
 	}
 

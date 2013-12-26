@@ -19,6 +19,14 @@ public class MongoUtils {
 		return new BasicDBObject("_id", id);
 	}
 
+	public static BasicDBObject toPrimaryKey(String id) {
+		return new BasicDBObject("_id", id);
+	}
+	
+	public static BasicDBObject toFieldKey(String key, String value) {
+		return new BasicDBObject(key, value);
+	}
+	
 	public static long toId(DBObject dbObject) {
 		return (Long) dbObject.get("_id");
 	}
@@ -28,7 +36,7 @@ public class MongoUtils {
 		DBObject result = collection.findOne(primaryKey);
 
 		if (result == null) {
-			throw new RuntimeException("Entity was not found");
+			return null;
 		}
 
 		return toEntity.convert(result);

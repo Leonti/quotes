@@ -5,6 +5,7 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 import com.leonti.quotes.CorsFilter;
 import com.leonti.quotes.resources.QuoteResourceImpl;
+import com.leonti.quotes.resources.UserResourceImpl;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
@@ -15,6 +16,7 @@ public class ResourceModule extends JerseyServletModule {
 	protected void configureServlets() {
 		
 		bind(QuoteResourceImpl.class);
+		bind(UserResourceImpl.class);
 
 		Map<String, String> params = Maps.newHashMap();
 		params.put(JSONConfiguration.FEATURE_POJO_MAPPING, "true");

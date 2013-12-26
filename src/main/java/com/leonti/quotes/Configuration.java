@@ -13,6 +13,7 @@ public class Configuration {
 		String MONGO_PASSWORD = "mongo.password";
 		String MONGO_HOSTNAME = "mongo.hostname";
 		String MONGO_PORT = "mongo.port";
+		String PERSONA_AUDIENCE = "persona.audience";
 	}
 
 	private static final File DEFAULT = new File(System.getProperty("user.home") + File.separator + ".quotes" + File.separator

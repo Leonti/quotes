@@ -14,7 +14,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
-public class QuoteDao implements Dao<Quote> {
+public class QuoteDao implements Dao<Quote, Long> {
 	
 	private final DBCollection quotes;
 	private final CounterDao counterDao;
@@ -51,7 +51,7 @@ public class QuoteDao implements Dao<Quote> {
 	}
 	
 	@Override
-	public Quote read(long id) {
+	public Quote read(Long id) {
 		return MongoUtils.readEntity(quotes, MongoUtils.toPrimaryKey(id), toEntity);
 	}
 	
