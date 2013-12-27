@@ -23,6 +23,9 @@ public class ShiroModule extends ShiroWebModule {
 	protected void configureShiroWeb() {
 		bindRealm().to(PersonaRealm.class);
 
+		// DEVELOPMENT ONLY
+		addFilterChain("/rest/user", ANON);
+		
 		addFilterChain("/rest/user/login/**", ANON);
 		addFilterChain("/rest/**", AUTHC);
 	}

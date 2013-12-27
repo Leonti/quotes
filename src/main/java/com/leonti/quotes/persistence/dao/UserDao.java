@@ -50,7 +50,7 @@ public class UserDao implements Dao<User, String> {
 	@Override
 	public User save(User user) {
 
-		DBObject dbObject = MongoUtils.toPrimaryKey(emailToHash(user.getEmail()))
+		DBObject dbObject = MongoUtils.toPrimaryKey(user.getId())
 				.append("email", user.getEmail())
 				.append("registered", user.getRegistered());
 
@@ -64,7 +64,7 @@ public class UserDao implements Dao<User, String> {
 	}	
 	
 	public User create(String email) {
-		return save(new User(email, emailToHash(email), System.currentTimeMillis()));
+		return save(new User(emailToHash(email), email, System.currentTimeMillis()));
 	} 
 	
 	private String emailToHash(String email) {

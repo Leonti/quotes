@@ -25,8 +25,11 @@ public class UserResourceImpl implements UserResource {
 	public User get() {
 		Subject currentUser = SecurityUtils.getSubject();
 
+		// DEVELOPMENT ONLY
+		currentUser.login(new PersonaToken("DEV ASSERTION"));
+		
 		String email = (String) currentUser.getPrincipal();
-		return userService.read(email);
+		return userService.readByEmail(email);
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class UserResourceImpl implements UserResource {
 		currentUser.login(token);
 		
 		String email = (String) currentUser.getPrincipal();
-		return userService.read(email);
+		return userService.readByEmail(email);
 	}
 
 	@Override
