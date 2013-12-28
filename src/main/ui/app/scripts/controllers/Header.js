@@ -3,19 +3,23 @@
 angular.module('uiApp')
   .controller('HeaderCtrl', ['$scope', 'User', function ($scope, UserService) {
 	  
-	  $scope.user = UserService.getUser();
-
-	  $scope.user.then(null, function(reason) {
-		  $scope.error = reason;
-	  });
+	  UserService.getUser().then(onUserLoad, onUserError);
 	  
 	  $scope.login = function() {
-		  $scope.user = UserService.login();
+		  UserService.login().then(onUserLoad, onUserError);
 	  };
 
 	  $scope.logout = function() {  
 		  UserService.logout();
 		  $scope.user = null;
-	  };	  
+	  };
+	  
+	  function onUserLoad(user) {
+		  $scope.user = user;
+	  }
+	  
+	  function onUserError(reason) {
+		  $scope.error = reason;
+	  }
 	  
   }]);

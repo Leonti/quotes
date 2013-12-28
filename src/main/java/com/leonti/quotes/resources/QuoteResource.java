@@ -1,5 +1,7 @@
 package com.leonti.quotes.resources;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,6 +27,9 @@ public interface QuoteResource {
 	@POST
 	public Quote create(Quote quote);
 	
+	@GET
+	public List<Quote> getQuotesForUser();		
+	
 	@PUT
 	@Path("{id}")
 	public Quote update(@PathParam("id") long id, Quote quote);
@@ -34,9 +39,7 @@ public interface QuoteResource {
 	public Quote getQuote(@PathParam("id") long id);	
 
 	@DELETE
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("{id}")
 	public void removeQuote(@PathParam("id") long id);	
-	
-	@GET
-	public Quote getRandomQuote();
 }

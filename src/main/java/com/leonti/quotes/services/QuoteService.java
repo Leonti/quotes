@@ -8,6 +8,8 @@ public interface QuoteService {
 
 	Quote create(Quote quote);
 
+	List<Quote> readUserQuotes(String userId);
+
 	Quote update(long id, Quote quote);
 
 	Quote read(long id);
@@ -19,4 +21,5 @@ public interface QuoteService {
 	Quote getRandomQuoteForTags(List<String> tags);
 	
 	void remove(long id);
+
 }

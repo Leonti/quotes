@@ -12,7 +12,7 @@ public interface WidgetService {
 
 	Widget read(long id);
 	
-	List<Widget> readUserWidgets(String email);
+	List<Widget> readUserWidgets(String userId);
 
 	void remove(long id);
 }

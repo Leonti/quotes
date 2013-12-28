@@ -35,7 +35,8 @@
 	<script src="components/jquery/jquery.js"></script>
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-cookies/angular-cookies.js"></script>  
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-route/angular-route.js"></script>    
     
 	<script src="components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="components/angular-strap/vendor/bootstrap-datepicker.js"></script>      
@@ -50,7 +51,11 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/Header.js"></script>
     <script src="scripts/controllers/QuoteForm.js"></script>
+    <script src="scripts/controllers/Quotes.js"></script>
+    <script src="scripts/controllers/WidgetForm.js"></script>
+    <script src="scripts/controllers/Widgets.js"></script>
     <script src="scripts/services/Quote.js"></script>
+    <script src="scripts/services/Widget.js"></script>
     <script src="scripts/services/User.js"></script>
     <script src="scripts/directives/tagsmanager.js"></script>
     <script src="scripts/controllers/main.js"></script>
@@ -58,16 +63,16 @@
     
     <script src="https://login.persona.org/include.js"></script>
     <script>
-	    var _quote = {
-	    	element: document.getElementById('quote'),
-	    	tags: 'leonti',
-	    	excludedTags: 'unfunny'
-	    };
+// 	    var _quote = {
+// 	    	element: document.getElementById('quote'),
+// 	    	tags: 'leonti',
+// 	    	excludedTags: 'unfunny'
+// 	    };
  
-		(function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		q.src='//localhost2:9000/client.js';
-		q.id='_quote';
-		s.parentNode.insertBefore(q,s)}(document,'script'));    
+// 		(function(d,t){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];
+// 		q.src='//localhost:8080/client.js';
+// 		q.id='_quote';
+// 		s.parentNode.insertBefore(q,s)}(document,'script'));    
     </script>
   </body>
 </html>

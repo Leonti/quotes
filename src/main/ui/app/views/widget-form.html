@@ -1,0 +1,13 @@
+<div class="row" ng-controller="WidgetFormCtrl">
+	<div class="col-md-offset-4 col-md-4">
+		<form novalidate name="widgetForm" role="form">
+			<div class="form-group">
+				<label class="control-label">Widget type:</label> <br/>
+				<input type="radio" ng-model="widget.type" value="IDS"> Random from preselected list <br/>
+				<input type="radio" ng-model="widget.type" value="TAGS"> Random from tags <br/>			
+			</div>
+			<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addWidget()"
+				data-ng-disabled="widgetForm.$invalid">Add widget</button>		
+		</form>
+	</div>		
+</div>

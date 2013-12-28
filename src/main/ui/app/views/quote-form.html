@@ -9,15 +9,14 @@
 					<label class="control-label">Who:</label>
 					<input type="text" class="form-control" data-ng-model="quote.who" name="who" required placeholder="Who is the author of the quote?" />
 				</div>
-				<div class="form-group" ng-class="{ 'has-error': quoteForm.when.$invalid && quoteForm.when.$dirty}">
-					<label class="control-label">When:</label>
-					<input type="text" class="form-control" bs-datepicker data-ng-model="quote.when" name="when" required placeholder="When it was said?" />
-					<!-- <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button> -->
-				</div>
 				<div class="form-group" ng-class="{ 'has-error': quoteForm.what.$invalid && quoteForm.what.$dirty}">
 					<label class="control-label">What:</label>
 					<textarea class="form-control" rows = "5" data-ng-model="quote.what" name="what" required placeholder="The quote"></textarea>
 				</div>
+				<div class="form-group">
+					<label class="control-label">When:</label>
+					<input type="text" class="form-control" bs-datepicker data-ng-model="quote.when" name="when" placeholder="When it was said?" />
+				</div>				
 				<div class="form-group">
 					<label>Tags:</label>
  					<input class="tags form-control" type="text" tagsmanager placeholder="pretentious, funny, deep" />

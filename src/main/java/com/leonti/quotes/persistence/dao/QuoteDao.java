@@ -83,8 +83,13 @@ public class QuoteDao implements Dao<Quote, Long> {
 	public void remove(Long id) {
 		MongoUtils.removeEntity(quotes, MongoUtils.toPrimaryKey(id));
 	}	
+
+	public List<Quote> readUserQuotes(String userId) {
+		return MongoUtils.readEntities(quotes, MongoUtils.toFieldKey("userId", userId),
+				toEntity);
+	}
 	
-	public List<Quote> getQuotesForTags(List<String> tags) {
+	public List<Quote> readQuotesForTags(List<String> tags) {
 		BasicDBList query = new BasicDBList();
 		for (String tag : tags) {
 			query.add(new BasicDBObject("tags", tag));
@@ -113,5 +118,4 @@ public class QuoteDao implements Dao<Quote, Long> {
 	private long nextId() {
 		return counterDao.next("quote");
 	}
-
 }

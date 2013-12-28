@@ -1,12 +1,15 @@
 'use strict';
 
-angular.module('uiApp')
-  .factory('Quote', ['Restangular', function (Restangular) {  
+angular.module('uiApp').factory('Quote', ['Restangular', function (Restangular) {  
 	  
     return {
-    	random: function() {
+    	readAll: function() {
     		return Restangular.all('quote').doGET();
     	},
+  
+    	remove: function(id) {
+    		return Restangular.one('quote', id).remove();
+    	},    	
     	
 		create: function(quote) {
 			return Restangular.all('quote').post(quote);

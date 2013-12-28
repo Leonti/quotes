@@ -30,6 +30,7 @@ public interface WidgetResource {
 	public Widget getWidget(@PathParam("id") long id);	
 
 	@DELETE
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("{id}")
 	public void removeWidget(@PathParam("id") long id);		
 	

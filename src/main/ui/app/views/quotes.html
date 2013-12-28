@@ -1,0 +1,9 @@
+<div class="row" ng-controller="QuotesCtrl">
+	<div class="col-md-offset-4 col-md-4">
+		<ul>
+			<li ng-repeat="quote in quotes">
+				{{quote.id}} {{quote.who}} {{quote.what}} <span ng-click="remove(quote.id)">x</span>
+			</li>
+		</ul>	
+	</div>
+</div>

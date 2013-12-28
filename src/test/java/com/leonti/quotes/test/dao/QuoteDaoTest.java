@@ -25,7 +25,7 @@ public class QuoteDaoTest {
 		Quote read = quoteDao.save(quote);
 		
 		System.out.println(read);
-		System.out.println(quoteDao.getQuotesForTags(tags).size());
+		System.out.println(quoteDao.readQuotesForTags(tags).size());
 	}
 	
 	@Test

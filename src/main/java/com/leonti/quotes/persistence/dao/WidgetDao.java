@@ -43,7 +43,7 @@ public class WidgetDao implements Dao<Widget, Long> {
 				
 				return new Widget(
 						MongoUtils.toId(dbObject),
-						(String) dbObject.get("email"),
+						(String) dbObject.get("userId"),
 						Widget.Type.valueOf((String) dbObject.get("type")),
 						quoteIds,
 						tags
@@ -62,8 +62,9 @@ public class WidgetDao implements Dao<Widget, Long> {
 		return MongoUtils.readAllEntities(widgets, toEntity);
 	}
 
-	public List<Widget> readUserWidgets(String email) {
-		return MongoUtils.readEntities(widgets, MongoUtils.toFieldKey("email", email),
+	public List<Widget> readUserWidgets(String userId) {
+		
+		return MongoUtils.readEntities(widgets, MongoUtils.toFieldKey("userId", userId),
 				toEntity);	
 	}
 
@@ -72,7 +73,7 @@ public class WidgetDao implements Dao<Widget, Long> {
 		long id = widget.getId() == null ? nextId() : widget.getId();
 		
 		DBObject dbObject = MongoUtils.toPrimaryKey(id)
-				.append("email", widget.getUserId())
+				.append("userId", widget.getUserId())
 				.append("type", widget.getType().name())
 				.append("quoteIds", widget.getQuoteIds())
 				.append("tags", widget.getTags());

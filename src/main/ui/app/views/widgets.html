@@ -1,0 +1,9 @@
+<div class="row" ng-controller="WidgetsCtrl">
+	<div class="col-md-offset-4 col-md-4">
+		<ul>
+			<li ng-repeat="widget in widgets">
+				{{widget.id}} <span ng-click="remove(widget.id)">x</span>
+			</li>
+		</ul>	
+	</div>
+</div>

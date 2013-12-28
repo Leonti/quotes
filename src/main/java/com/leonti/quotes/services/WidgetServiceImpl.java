@@ -32,8 +32,8 @@ public class WidgetServiceImpl implements WidgetService {
 	}
 
 	@Override
-	public List<Widget> readUserWidgets(String email) {
-		return widgetDao.readUserWidgets(email);
+	public List<Widget> readUserWidgets(String userId) {
+		return widgetDao.readUserWidgets(userId);
 	}
 
 	@Override

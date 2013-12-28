@@ -35,8 +35,13 @@ public class QuoteServiceImpl implements QuoteService {
 	}
 
 	@Override
+	public List<Quote> readUserQuotes(String userId) {
+		return quoteDao.readUserQuotes(userId);
+	}	
+	
+	@Override
 	public List<Quote> getQuotesForTags(List<String> tags) {
-		return quoteDao.getQuotesForTags(tags);
+		return quoteDao.readQuotesForTags(tags);
 	}
 
 	@Override
@@ -46,7 +51,7 @@ public class QuoteServiceImpl implements QuoteService {
 
 	@Override
 	public Quote getRandomQuoteForTags(List<String> tags) {
-		return getRandomQuote(quoteDao.getQuotesForTags(tags));
+		return getRandomQuote(quoteDao.readQuotesForTags(tags));
 	}
 	
 	private Quote getRandomQuote(List<Quote> quotes) {
@@ -56,5 +61,6 @@ public class QuoteServiceImpl implements QuoteService {
 	@Override
 	public void remove(long id) {
 		quoteDao.remove(id);
-	}	
+	}
+	
 }

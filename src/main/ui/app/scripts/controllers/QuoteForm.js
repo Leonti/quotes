@@ -1,18 +1,24 @@
 'use strict';
 
-angular.module('uiApp')
-  .controller('QuoteFormCtrl', ['$scope', 'Quote', function ($scope, quoteService) {
+angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Quote', 'User', function ($scope, $rootScope, quoteService, userService) {
 	  
 	  $scope.addQuote = function() {
-		  		  
-		  var quote = angular.copy($scope.quote);
-		  quote.tags = $('input[name=tags]').val().split(',');
-		  quote.when = $scope.quote.when.getTime() / 1000;
-		  
-		  quoteService.create(quote).then(function(createdQuote) {
-			  $scope.$emit('quoteCreated', createdQuote);
-		  });
-		  
+
+		  userService.getUser().then(function(user) {
+			  var quote = angular.copy($scope.quote);
+			  quote.tags = $('input[name=tags]').val().split(',');
+			  if ($scope.quote.when != undefined) {
+				  quote.when = $scope.quote.when.getTime();
+			  }
+			  quote.userId = user.id;
+			  
+			  quoteService.create(quote).then(function(createdQuote) {
+				  $rootScope.$emit('quoteCreated', createdQuote);
+				  $scope.quote = {};
+				  console.log($scope.quoteForm);
+				  $scope.quoteForm.$setPristine();
+			  });
+		  });		  
 	  };
 	  
   }]);
