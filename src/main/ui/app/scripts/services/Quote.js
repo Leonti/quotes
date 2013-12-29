@@ -17,6 +17,10 @@ angular.module('uiApp').factory('Quote', ['Restangular', function (Restangular) 
     	
 		create: function(quote) {
 			return Restangular.all('quote').post(quote);
-		}
+		},
+		
+		update: function(quote) {
+			return Restangular.one('quote', quote.id).customPUT(quote);
+		}		
     };
   }]);

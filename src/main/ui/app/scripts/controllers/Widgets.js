@@ -18,7 +18,7 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 	
 	$scope.edit = function(widget) {
 		$rootScope.$emit('editWidget', {
-			widget: widget
+			widget: angular.copy(widget)
 		});
 	};
 	

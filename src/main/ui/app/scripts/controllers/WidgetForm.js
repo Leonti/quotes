@@ -37,8 +37,7 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 			
 			widgetService.update($scope.widget).then(function() {
 				$rootScope.$emit('widgetUpdated');
-				$scope.widget = angular.copy(widgetTemplate);
-				$scope.widgetForm.$setPristine();
+				resetForm();
 			});
 		});	  
 	};	
@@ -49,10 +48,14 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 			
 			widgetService.create($scope.widget).then(function() {
 				$rootScope.$emit('widgetCreated');
-				$scope.widget = angular.copy(widgetTemplate);
-				$scope.widgetForm.$setPristine();
+				resetForm();
 			});
 		});	  
 	};
+	
+	function resetForm() {
+		$scope.widget = angular.copy(widgetTemplate);
+		$scope.widgetForm.$setPristine();		
+	}
 	  
 }]);

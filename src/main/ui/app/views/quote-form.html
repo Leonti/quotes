@@ -15,10 +15,12 @@
 				</div>				
 				<div class="form-group">
 					<label>Tags:</label>
- 					<input class="tags form-control" type="text" tagsmanager placeholder="pretentious, funny, deep" />
+ 					<input class="tags form-control" type="text" tagsmanager tags="quote.tags" placeholder="pretentious, funny, deep" />
 				</div>
-				<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addQuote()"
-					data-ng-disabled="quoteForm.$invalid">Add quote</button>		
+				<button class="btn btn-large btn-block btn-primary" type="button" ng-hide="quote.id" data-ng-click="addQuote()"
+					data-ng-disabled="quoteForm.$invalid">Add quote</button>
+				<button class="btn btn-large btn-block btn-primary" type="button" ng-show="quote.id" data-ng-click="updateQuote()"
+					data-ng-disabled="quoteForm.$invalid">Save quote</button>							
 			</form>
 		</div>		
 </div>

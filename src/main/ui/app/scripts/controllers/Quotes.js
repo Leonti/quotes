@@ -13,6 +13,10 @@ angular.module('uiApp').controller('QuotesCtrl', ['$scope', '$rootScope', 'Quote
 	$rootScope.$on('quoteCreated', function() {
 		$scope.updateList();
 	});
+
+	$rootScope.$on('quoteUpdated', function() {
+		$scope.updateList();
+	});	
 	
 	$rootScope.$on('showQuotesPicker', function(event, data) {
 		$scope.onFinishPickingCallback = data.callback;
@@ -27,6 +31,12 @@ angular.module('uiApp').controller('QuotesCtrl', ['$scope', '$rootScope', 'Quote
 			$scope.updateList();
 		});
 	};
+
+	$scope.edit = function(quote) {
+		$rootScope.$emit('editQuote', {
+			quote: angular.copy(quote)
+		});
+	};	
 	
 	$scope.finishPicking = function() {
 		
