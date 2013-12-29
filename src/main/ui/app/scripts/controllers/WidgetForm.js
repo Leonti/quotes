@@ -2,13 +2,13 @@
 
 angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'Widget', 'User', function ($scope, $rootScope, widgetService, userService) {
 
-	var newWidget = {
+	var widgetTemplate = {
 		type: 'IDS',
 		quoteIds: [],
 		tags: []
 	};  
 	
-	$scope.widget = angular.copy(newWidget);
+	$scope.widget = angular.copy(widgetTemplate);
 	
 	$scope.showQuotesPicker = function() {
 		$rootScope.$emit('showQuotesPicker', {
@@ -28,14 +28,28 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 		});
 	};	
 	
+	$rootScope.$on('editWidget', function(event, data) {
+		$scope.widget = data.widget;
+	});	
+	
+	$scope.updateWidget = function() {
+		userService.getUser().then(function(user) {
+			
+			widgetService.update($scope.widget).then(function() {
+				$rootScope.$emit('widgetUpdated');
+				$scope.widget = angular.copy(widgetTemplate);
+				$scope.widgetForm.$setPristine();
+			});
+		});	  
+	};	
+	
 	$scope.addWidget = function() {
 		userService.getUser().then(function(user) {
-			var widget = angular.copy($scope.widget);
-			widget.userId = user.id;
+			$scope.widget.userId = user.id;
 			
-			widgetService.create(widget).then(function(createdWidget) {
-				$rootScope.$emit('widgetCreated', createdWidget);
-				$scope.widget = angular.copy(newWidget);
+			widgetService.create($scope.widget).then(function() {
+				$rootScope.$emit('widgetCreated');
+				$scope.widget = angular.copy(widgetTemplate);
 				$scope.widgetForm.$setPristine();
 			});
 		});	  

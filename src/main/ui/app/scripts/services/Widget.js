@@ -13,6 +13,9 @@ angular.module('uiApp').factory('Widget', ['Restangular', function (Restangular)
     	
 		create: function(widget) {
 			return Restangular.all('widget').post(widget);
-		}
+		},
+		update: function(widget) {
+			return Restangular.one('widget', widget.id).customPUT(widget);
+		}		
     };
   }]);

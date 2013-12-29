@@ -15,7 +15,9 @@
 			<button class="btn" ng-show="widget.type == 'TAGS'" 
 				ng-click="showTagsPicker()">{{widget.tags.length}} tags selected</button>
 		</div>
-		<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addWidget()"
-			data-ng-disabled="widgetForm.$invalid">Add widget</button>		
+		<button class="btn btn-large btn-block btn-primary" type="button" ng-hide="widget.id" data-ng-click="addWidget()"
+			data-ng-disabled="widgetForm.$invalid">Add widget</button>
+		<button class="btn btn-large btn-block btn-primary" type="button" ng-show="widget.id" data-ng-click="updateWidget()"
+			data-ng-disabled="widgetForm.$invalid">Save widget</button>					
 	</form>
 </div>

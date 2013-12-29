@@ -1,7 +1,13 @@
 <div ng-controller="WidgetsCtrl">
-	<ul>
-		<li ng-repeat="widget in widgets">
-			{{widget.id}} {{widget.name}} <span ng-click="remove(widget.id)">x</span>
-		</li>
-	</ul>	
+	<div class="row" ng-repeat="widget in widgets">
+		<div class="col-md-7" >
+			<strong>{{widget.name}}</strong> <br />
+			<span ng-show="widget.type == 'IDS'">{{widget.quoteIds.length}} quotes</span>
+			<span ng-show="widget.type == 'TAGS'">{{widget.tags.length}} tags</span>
+		</div>
+		<div class="col-md-1">
+			<span ng-click="edit(widget)" class="glyphicon glyphicon-edit"></span>
+			<span ng-click="remove(widget.id)" class="glyphicon glyphicon-remove"></span>
+		</div>
+	</div>		
 </div>
