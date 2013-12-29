@@ -62,5 +62,10 @@ public class QuoteServiceImpl implements QuoteService {
 	public void remove(long id) {
 		quoteDao.remove(id);
 	}
+
+	@Override
+	public List<String> readTagsForUser(String userId) {
+		return quoteDao.getTagsForUser(userId);
+	}
 	
 }

@@ -29,6 +29,10 @@ public interface QuoteResource {
 	
 	@GET
 	public List<Quote> getQuotesForUser();		
+
+	@GET
+	@Path("tags")
+	public List<String> getTagsForUser();	
 	
 	@PUT
 	@Path("{id}")

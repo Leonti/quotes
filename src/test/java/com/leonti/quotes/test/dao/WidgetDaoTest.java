@@ -20,7 +20,7 @@ public class WidgetDaoTest {
 		List<String> tags = Lists.<String>asList("Leonti", new String[] {"Unfunny"});
 		List<Long> quoteIds = Lists.<Long>asList(1l, new Long[] {2l, 3l, 4l});
 		
-		Widget widget = new Widget(null, "sadasdsa", Widget.Type.IDS, quoteIds, tags);
+		Widget widget = new Widget(null, "Some widget", "sadasdsa", Widget.Type.IDS, quoteIds, tags);
 		
 		Widget read = widgetDao.save(widget);
 		

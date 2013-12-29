@@ -22,4 +22,6 @@ public interface QuoteService {
 	
 	void remove(long id);
 
+	List<String> readTagsForUser(String userId);
+
 }

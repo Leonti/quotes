@@ -1,5 +1,7 @@
 package com.leonti.quotes.persistence.dao;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -43,6 +45,7 @@ public class WidgetDao implements Dao<Widget, Long> {
 				
 				return new Widget(
 						MongoUtils.toId(dbObject),
+						(String) dbObject.get("name"),
 						(String) dbObject.get("userId"),
 						Widget.Type.valueOf((String) dbObject.get("type")),
 						quoteIds,
@@ -59,13 +62,13 @@ public class WidgetDao implements Dao<Widget, Long> {
 
 	@Override
 	public List<Widget> readAll() {
-		return MongoUtils.readAllEntities(widgets, toEntity);
+		return sortById(MongoUtils.readAllEntities(widgets, toEntity));
 	}
 
 	public List<Widget> readUserWidgets(String userId) {
 		
-		return MongoUtils.readEntities(widgets, MongoUtils.toFieldKey("userId", userId),
-				toEntity);	
+		return sortById(MongoUtils.readEntities(widgets, MongoUtils.toFieldKey("userId", userId),
+				toEntity));	
 	}
 
 	@Override
@@ -73,6 +76,7 @@ public class WidgetDao implements Dao<Widget, Long> {
 		long id = widget.getId() == null ? nextId() : widget.getId();
 		
 		DBObject dbObject = MongoUtils.toPrimaryKey(id)
+				.append("name", widget.getName())
 				.append("userId", widget.getUserId())
 				.append("type", widget.getType().name())
 				.append("quoteIds", widget.getQuoteIds())
@@ -87,6 +91,18 @@ public class WidgetDao implements Dao<Widget, Long> {
 	public void remove(Long id) {
 		MongoUtils.removeEntity(widgets, MongoUtils.toPrimaryKey(id));
 	}	
+	
+	private List<Widget> sortById(List<Widget> widgets) {
+		Collections.sort(widgets, new Comparator<Widget>() {
+
+			@Override
+			public int compare(Widget widget1, Widget widget2) {
+				return widget2.getId().compareTo(widget1.getId());
+			}		
+		});
+		
+		return widgets;
+	} 
 	
 	private long nextId() {
 		return counterDao.next("widget");

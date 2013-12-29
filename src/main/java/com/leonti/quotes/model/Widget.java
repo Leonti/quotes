@@ -13,6 +13,7 @@ public class Widget {
 	}
 	
 	private final Long id;
+	private String name;
 	private final String userId;
 	private final Type type;
 	private final List<Long> quoteIds;
@@ -21,11 +22,13 @@ public class Widget {
 	@JsonCreator
 	public Widget(
 			@JsonProperty("id") Long id, 
+			@JsonProperty("name") String name, 
 			@JsonProperty("userId") String userId, 
 			@JsonProperty("type") Type type, 
 			@JsonProperty("quoteIds") List<Long> quoteIds,
 			@JsonProperty("tags") List<String> tags) {
 		this.id = id;
+		this.name = name;
 		this.userId = userId;
 		this.type = type;
 		this.quoteIds = quoteIds;
@@ -36,6 +39,10 @@ public class Widget {
 		return id;
 	}
 
+	public String getName() {
+		return name;
+	}	
+	
 	public String getUserId() {
 		return userId;
 	}

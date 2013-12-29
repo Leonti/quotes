@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('uiApp')
-  .directive('tagsmanager', function () {
+angular.module('uiApp').directive('tagsmanager', function () {
     return {
       restrict: 'A',
            

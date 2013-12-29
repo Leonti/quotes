@@ -6,6 +6,10 @@ angular.module('uiApp').factory('Quote', ['Restangular', function (Restangular) 
     	readAll: function() {
     		return Restangular.all('quote').doGET();
     	},
+    	
+    	readTagsForUser: function() {
+    		return Restangular.all('quote/tags').doGET();
+    	},
   
     	remove: function(id) {
     		return Restangular.one('quote', id).remove();

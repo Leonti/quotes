@@ -1,13 +1,21 @@
-<div class="row" ng-controller="WidgetFormCtrl">
-	<div class="col-md-offset-4 col-md-4">
-		<form novalidate name="widgetForm" role="form">
-			<div class="form-group">
-				<label class="control-label">Widget type:</label> <br/>
-				<input type="radio" ng-model="widget.type" value="IDS"> Random from preselected list <br/>
-				<input type="radio" ng-model="widget.type" value="TAGS"> Random from tags <br/>			
-			</div>
-			<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addWidget()"
-				data-ng-disabled="widgetForm.$invalid">Add widget</button>		
-		</form>
-	</div>		
+<div ng-controller="WidgetFormCtrl">
+	<form novalidate name="widgetForm" role="form">
+		<div class="form-group" ng-class="{ 'has-error': widgetForm.name.$invalid && widgetForm.name.$dirty }">
+			<label class="control-label">Widget name:</label> <br/>
+			<input type="text" class="form-control" data-ng-model="widget.name" name="name" required placeholder="Name" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Widget type:</label> <br/>
+			<label><input type="radio" ng-model="widget.type" value="IDS"> Random from preselected list</label> <br/>
+			<label><input type="radio" ng-model="widget.type" value="TAGS"> Random from tags</label> <br/>			
+		</div>
+		<div class="form-group">
+			<button class="btn" ng-show="widget.type == 'IDS'" 
+				ng-click="showQuotesPicker()"> {{widget.quoteIds.length}} quotes selected</button>
+			<button class="btn" ng-show="widget.type == 'TAGS'" 
+				ng-click="showTagsPicker()">{{widget.tags.length}} tags selected</button>
+		</div>
+		<button class="btn btn-large btn-block btn-primary" type="button" data-ng-click="addWidget()"
+			data-ng-disabled="widgetForm.$invalid">Add widget</button>		
+	</form>
 </div>

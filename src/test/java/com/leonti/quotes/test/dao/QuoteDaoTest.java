@@ -35,6 +35,8 @@ public class QuoteDaoTest {
 		QuoteDao quoteDao = new QuoteDao(TestDaoBase.getMongoDB(), counterDao);
 		
 		System.out.println(quoteDao.getAllTags());
+		
+		System.out.println(quoteDao.getTagsForUser("asfgvjabcfiuy"));
 	}
 
 }

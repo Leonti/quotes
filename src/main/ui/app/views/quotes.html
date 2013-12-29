@@ -1,9 +1,14 @@
-<div class="row" ng-controller="QuotesCtrl">
-	<div class="col-md-offset-4 col-md-4">
-		<ul>
-			<li ng-repeat="quote in quotes">
-				{{quote.id}} {{quote.who}} {{quote.what}} <span ng-click="remove(quote.id)">x</span>
-			</li>
-		</ul>	
-	</div>
+<div ng-controller="QuotesCtrl">
+	<div class="row" ng-repeat="quote in quotes">
+		<div class="col-md-11" >
+			<blockquote>
+			  	<p>{{quote.what}}</p>
+			  	<small>{{quote.who}}<span ng-show="quote.when">, {{formatDate(quote.when)}}</span></small>
+			  	<span ng-show="quote.tags.length > 0">Tags:
+					<i ng-repeat="tag in quote.tags">{{tag}} </i>
+			  	</span>	
+			</blockquote>
+		</div>
+		<div class="col-md-1"><span ng-click="remove(quote.id)" class="glyphicon glyphicon-remove"></span></div>
+	</div>	
 </div>

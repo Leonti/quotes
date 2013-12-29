@@ -1,0 +1,26 @@
+<div class="modal" ng-controller="TagsCtrl" style="display:block;" ng-show="onFinishPickingCallback">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="onFinishPickingCallback = null;">&times;</button>
+        <h4 class="modal-title">Pick tags</h4>
+      </div>
+      <div class="modal-body">
+		<form>
+		<div class="form-group">
+			<input type="text" class="form-control" data-ng-model="filter" placeholder="Search..." ng-change="updateList()" />
+		</div>
+		<div class="checkbox" ng-repeat="tag in tags">
+	    	<label>
+	      		<input type="checkbox" ng-model="selected[tag]"> {{tag}}
+	    	</label>
+	  	</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="onFinishPickingCallback = null;">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="finishPicking()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>

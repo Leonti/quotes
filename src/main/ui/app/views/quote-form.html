@@ -1,17 +1,13 @@
-<div class="row" ng-controller="QuoteFormCtrl">
-	<div class="col-md-offset-4 col-md-4">
-		<div class="page-header">
-			<h1>Add your quote!</h1>
-		</div>
+<div ng-controller="QuoteFormCtrl">
 		<div class="hero-unit">
 			<form novalidate name="quoteForm" role="form" class="quote-form">
-				<div class="form-group" ng-class="{ 'has-error': quoteForm.who.$invalid && quoteForm.who.$dirty }">			
-					<label class="control-label">Who:</label>
-					<input type="text" class="form-control" data-ng-model="quote.who" name="who" required placeholder="Who is the author of the quote?" />
-				</div>
 				<div class="form-group" ng-class="{ 'has-error': quoteForm.what.$invalid && quoteForm.what.$dirty}">
 					<label class="control-label">What:</label>
 					<textarea class="form-control" rows = "5" data-ng-model="quote.what" name="what" required placeholder="The quote"></textarea>
+				</div>			
+				<div class="form-group" ng-class="{ 'has-error': quoteForm.who.$invalid && quoteForm.who.$dirty }">			
+					<label class="control-label">Who:</label>
+					<input type="text" class="form-control" data-ng-model="quote.who" name="who" required placeholder="Who is the author of the quote?" />
 				</div>
 				<div class="form-group">
 					<label class="control-label">When:</label>
@@ -25,5 +21,4 @@
 					data-ng-disabled="quoteForm.$invalid">Add quote</button>		
 			</form>
 		</div>		
-	</div>
 </div>

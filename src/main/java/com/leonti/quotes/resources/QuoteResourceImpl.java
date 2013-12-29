@@ -52,4 +52,13 @@ public class QuoteResourceImpl implements QuoteResource {
 		quoteService.remove(id);
 	}
 
+	@Override
+	public List<String> getTagsForUser() {
+		Subject currentUser = SecurityUtils.getSubject();
+
+		String email = (String) currentUser.getPrincipal();
+		User user = userService.readByEmail(email);
+		return quoteService.readTagsForUser(user.getId());
+	}
+
 }

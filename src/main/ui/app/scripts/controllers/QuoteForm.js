@@ -6,7 +6,15 @@ angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Qu
 
 		  userService.getUser().then(function(user) {
 			  var quote = angular.copy($scope.quote);
-			  quote.tags = $('input[name=tags]').val().split(',');
+			  quote.tags = [];
+			  var tags = $('input[name=hidden-tags]').val().split(',');
+			  console.log(tags);
+		  	  _.each(tags, function(tag) {
+		  		  if (tag.length > 0) {
+		  			quote.tags.push(tag);
+		  		  }
+		  	  });
+		  
 			  if ($scope.quote.when != undefined) {
 				  quote.when = $scope.quote.when.getTime();
 			  }
@@ -15,7 +23,6 @@ angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Qu
 			  quoteService.create(quote).then(function(createdQuote) {
 				  $rootScope.$emit('quoteCreated', createdQuote);
 				  $scope.quote = {};
-				  console.log($scope.quoteForm);
 				  $scope.quoteForm.$setPristine();
 			  });
 		  });		  
