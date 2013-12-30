@@ -10,5 +10,5 @@ angular.module('uiApp', ['ngRoute', 'restangular', '$strap.directives']).config(
         redirectTo: '/'
       });
     
-    RestangularProvider.setBaseUrl(window.location.protocol + '//' + window.location.hostname + ":8080/rest");
+    RestangularProvider.setBaseUrl(window.location.protocol + '//' + window.location.hostname + ":8080/resource/rest");
 });

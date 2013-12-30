@@ -14,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.leonti.quotes.model.User;
 
-@Path("user")
+@Path("rest/user")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public interface UserResource {

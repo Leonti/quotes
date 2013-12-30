@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.leonti.quotes.model.Widget;
 
-@Path("widget")
+@Path("rest/widget")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public interface WidgetResource {

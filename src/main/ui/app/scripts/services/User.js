@@ -13,7 +13,7 @@ angular.module('uiApp').factory('User', ['Restangular', '$http', '$q', function 
 		} else {
 			var result = $http({
 				method: 'GET',
-				url: '/rest/user'
+				url: '/resource/rest/user'
 			});
 			
 			result.success(function(data, status) {
@@ -42,7 +42,7 @@ angular.module('uiApp').factory('User', ['Restangular', '$http', '$q', function 
 				
 				var result = $http({
 				    method: 'POST',
-				    url: '/rest/user/login',
+				    url: '/resource/rest/user/login',
 				    data: {
 				    	assertion: assertion
 				    }
@@ -73,7 +73,7 @@ angular.module('uiApp').factory('User', ['Restangular', '$http', '$q', function 
 	function logout() {
 		$http({
 		    method: 'GET',
-		    url: '/rest/user/logout'
+		    url: '/resource/rest/user/logout'
 		}).then(function() {
 			navigator.id.logout();			
 		});

@@ -2,6 +2,7 @@ package com.leonti.quotes.services;
 
 import java.util.List;
 
+import com.leonti.quotes.model.Quote;
 import com.leonti.quotes.model.Widget;
 
 public interface WidgetService {
@@ -14,5 +15,8 @@ public interface WidgetService {
 	
 	List<Widget> readUserWidgets(String userId);
 
+	Quote getRandomQuoteForWidget(Long widgetId);
+
 	void remove(long id);
+
 }

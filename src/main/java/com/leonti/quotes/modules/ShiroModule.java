@@ -24,10 +24,11 @@ public class ShiroModule extends ShiroWebModule {
 		bindRealm().to(PersonaRealm.class);
 
 		// DEVELOPMENT ONLY
-		addFilterChain("/rest/user", ANON);
+		addFilterChain("/resource/rest/user", ANON);
+		addFilterChain("/resource/public/**", ANON);
 		
-		addFilterChain("/rest/user/login/**", ANON);
-		addFilterChain("/rest/**", AUTHC);
+		addFilterChain("/resource/rest/user/login/**", ANON);
+		addFilterChain("/resource/rest/**", AUTHC);
 	}
 	
 	@Provides

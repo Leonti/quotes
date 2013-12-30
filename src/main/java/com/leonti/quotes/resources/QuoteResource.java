@@ -12,18 +12,13 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.leonti.quotes.model.Quote;
 
-@Path("quote")
+@Path("rest/quote")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public interface QuoteResource {
 
-	Log log = LogFactory.getLog(QuoteResource.class);
-	
 	@POST
 	public Quote create(Quote quote);
 	

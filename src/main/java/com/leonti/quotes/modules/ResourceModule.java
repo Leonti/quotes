@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 import com.leonti.quotes.CorsFilter;
+import com.leonti.quotes.resources.PublicResourceImpl;
 import com.leonti.quotes.resources.QuoteResourceImpl;
 import com.leonti.quotes.resources.UserResourceImpl;
 import com.leonti.quotes.resources.WidgetResourceImpl;
@@ -19,11 +20,12 @@ public class ResourceModule extends JerseyServletModule {
 		bind(QuoteResourceImpl.class);
 		bind(UserResourceImpl.class);
 		bind(WidgetResourceImpl.class);
+		bind(PublicResourceImpl.class);
 		
 		Map<String, String> params = Maps.newHashMap();
 		params.put(JSONConfiguration.FEATURE_POJO_MAPPING, "true");
 		
-		serve("/rest/*").with(GuiceContainer.class, params);
+		serve("/resource/*").with(GuiceContainer.class, params);
 		
 		filter("/*").through(CorsFilter.class);
 	}
