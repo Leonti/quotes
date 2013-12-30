@@ -1,13 +1,30 @@
 <div ng-controller="WidgetsCtrl">
 	<div class="row" ng-repeat="widget in widgets">
-		<div class="col-md-7" >
-			<strong>{{widget.name}}</strong> <br />
-			<span ng-show="widget.type == 'IDS'">{{widget.quoteIds.length}} quotes</span>
-			<span ng-show="widget.type == 'TAGS'">{{widget.tags.length}} tags</span>
-		</div>
-		<div class="col-md-1">
-			<span ng-click="edit(widget)" class="glyphicon glyphicon-edit"></span>
-			<span ng-click="remove(widget.id)" class="glyphicon glyphicon-remove"></span>
-		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-9" >
+					<strong>{{widget.name}}</strong> <br />
+					<span ng-show="widget.type == 'IDS'">{{widget.quoteIds.length}} quotes</span>
+					<span ng-show="widget.type == 'TAGS'">{{widget.tags.length}} tags</span>
+				</div>
+				<div class="col-md-2">
+					<span ng-click="toggleExpand(widget.id)" class="glyphicon" 
+					ng-class="{'glyphicon-expand': !isExpanded(widget.id), 'glyphicon-collapse-up': isExpanded(widget.id)}"></span>
+					<span ng-click="edit(widget)" class="glyphicon glyphicon-edit"></span>
+					<span ng-click="remove(widget.id)" class="glyphicon glyphicon-remove"></span>
+				</div>			
+			</div>
+			<div class="row" ng-show="isExpanded(widget.id)">
+				<div class="col-md-4">
+				First example
+				</div>
+				<div class="col-md-4">
+				Second example
+				</div>
+				<div class="col-md-4">
+				Third example
+				</div>
+			</div>
+		</div>	
 	</div>		
 </div>

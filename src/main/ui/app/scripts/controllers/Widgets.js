@@ -2,6 +2,16 @@
 
 angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widget', function ($scope, $rootScope, widgetService) {
 
+	var expandedWidgetId;
+	
+	$scope.toggleExpand = function(widgetId) {
+		expandedWidgetId = expandedWidgetId == widgetId ? null : widgetId; 
+	}; 
+	
+	$scope.isExpanded = function(widgetId) {
+		return widgetId == expandedWidgetId;
+	};
+	
 	$rootScope.$on('widgetCreated', function() {
 		updateList();
 	});

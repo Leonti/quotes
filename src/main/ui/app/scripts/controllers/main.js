@@ -3,7 +3,7 @@
 angular.module('uiApp').controller('MainCtrl', ['$scope', '$window', function ($scope, $window) {
 	$scope.baseUrl = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
 	
-	$scope.view = 'quotes';
+	$scope.view = 'widgets';
 	$scope.setView = function(view) {
 		$scope.view = view;
 	};
