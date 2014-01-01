@@ -2,6 +2,7 @@ package com.leonti.quotes.persistence.dao;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,6 +27,7 @@ public class WidgetDao implements Dao<Widget, Long> {
 		
 		toEntity = new MongoUtils.ToEntity<Widget>() {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public Widget convert(DBObject dbObject) {
 				
@@ -49,7 +51,8 @@ public class WidgetDao implements Dao<Widget, Long> {
 						(String) dbObject.get("userId"),
 						Widget.Type.valueOf((String) dbObject.get("type")),
 						quoteIds,
-						tags
+						tags,
+						(HashMap<String, String>) dbObject.get("configs")
 						);
 			}
 		};
@@ -80,7 +83,8 @@ public class WidgetDao implements Dao<Widget, Long> {
 				.append("userId", widget.getUserId())
 				.append("type", widget.getType().name())
 				.append("quoteIds", widget.getQuoteIds())
-				.append("tags", widget.getTags());
+				.append("tags", widget.getTags())
+				.append("configs", widget.getConfigs());
 		
 		this.widgets.save(dbObject);
 		

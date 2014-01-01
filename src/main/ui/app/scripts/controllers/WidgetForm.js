@@ -33,13 +33,10 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 	});	
 	
 	$scope.updateWidget = function() {
-		userService.getUser().then(function(user) {
-			
-			widgetService.update($scope.widget).then(function() {
-				$rootScope.$emit('widgetUpdated');
-				resetForm();
-			});
-		});	  
+		widgetService.update($scope.widget).then(function() {
+			$rootScope.$emit('widgetUpdated');
+			resetForm();
+		});
 	};	
 	
 	$scope.addWidget = function() {

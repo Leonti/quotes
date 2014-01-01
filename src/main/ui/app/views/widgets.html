@@ -15,16 +15,61 @@
 				</div>			
 			</div>
 			<div class="row" ng-show="isExpanded(widget.id)">
-				<div class="col-md-4">
-				First example
+				<div class="col-md-12">
+					<h4>Image</h4>
+					<ul class="nav nav-pills">
+					  <li ng-class="{active: getWidgetView('image') == 'preview'}"><a href="#" ng-click="setWidgetView('image', 'preview'); updateConfigs(widget)">Preview</a></li>
+					  <li ng-class="{active: getWidgetView('image') == 'config'}"><a href="#" ng-click="setWidgetView('image', 'config')">Config</a></li>
+					  <li ng-class="{active: getWidgetView('image') == 'code'}"><a href="#" ng-click="setWidgetView('image', 'code')">Code</a></li>
+					</ul>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12" ng-show="getWidgetView('image') == 'preview'">
+									<img ng-src="/resource/public/widget/{{widget.id}}/image/w/{{widget.configs.image_width}}/h/{{widget.configs.image_height}}" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12" ng-show="getWidgetView('image') == 'config'">
+									<form role="form" name="imageForm">
+										<div class="form-group" ng-class="{ 'has-error': imageForm.width.$invalid && imageForm.width.$dirty }">
+											<label class="control-label">Width:</label> <br/>
+											<input type="text" class="form-control" data-ng-model="widget.configs.image_width" name="width" 
+												required type="number" ng-minlength="2" />
+										</div>		
+										<div class="form-group" ng-class="{ 'has-error': imageForm.height.$invalid && imageForm.height.$dirty }">
+											<label class="control-label">Height:</label> <br/>
+											<input type="text" class="form-control" data-ng-model="widget.configs.image_height" name="height" 
+												required type="number" ng-minlength="2" />
+										</div>															
+									</form>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12" ng-show="getWidgetView('image') == 'code'">
+									<pre>
+&lt;img src="{{baseUrl}}/resource/public/widget/{{widget.id}}/image/w/{{widget.configs.image_width}}/h/{{widget.configs.image_height}}" /&gt;									
+									</pre>
+								</div>
+							</div>
+						</div>
+					</div>					
 				</div>
-				<div class="col-md-4">
-				Second example
+				<div class="col-md-12">
+					<h4>IFrame</h4>
+					<ul class="nav nav-pills">
+					  <li ng-class="{active: getWidgetView('iframe') == 'preview'}"><a href="#" ng-click="setWidgetView('iframe', 'preview')">Preview</a></li>
+					  <li ng-class="{active: getWidgetView('iframe') == 'config'}"><a href="#" ng-click="setWidgetView('iframe', 'config')">Config</a></li>
+					  <li ng-class="{active: getWidgetView('iframe') == 'code'}"><a href="#" ng-click="setWidgetView('iframe', 'code')">Code</a></li>
+					</ul>
+					<div class="row">
+						<div class="col-md-12" ng-show="getWidgetView('iframe') == 'preview'">
+							Preview
+						</div>
+						<div class="col-md-12" ng-show="getWidgetView('iframe') == 'config'">Config</div>
+						<div class="col-md-12" ng-show="getWidgetView('iframe') == 'code'">Code</div>
+					</div>
 				</div>
-				<div class="col-md-4">
-				Third example
-				</div>
-			</div>
 		</div>	
 	</div>		
 </div>

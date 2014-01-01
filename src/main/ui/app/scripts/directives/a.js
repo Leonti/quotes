@@ -6,7 +6,7 @@ angular.module('uiApp').directive('a', function() {
                 elem.on('click', function(e){
                     e.preventDefault();
                     if(attrs.ngClick){
-                        scope.$eval(attrs.ngClick);
+                    //    scope.$eval(attrs.ngClick);
                     }
                 });
             }
