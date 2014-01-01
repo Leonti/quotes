@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('uiApp').directive('tagsmanager', function () {
+angular.module('uiApp').directive('tagsmanager', ['$timeout', function ($timeout) {
 	return {
 		restrict: 'A',
 		scope: { 
@@ -11,26 +11,28 @@ angular.module('uiApp').directive('tagsmanager', function () {
         
 			var ignoreWatch = false;
 			scope.$watch('tags', function(newTags, oldTags) {
-				
 				if (ignoreWatch === true) {
 					ignoreWatch = false;
 					return;
 				}
-				$(element).tagsManager('empty');
+				element.tagsManager('empty');
 				_.each(newTags, function(tag) {
-					$(element).tagsManager('pushTag', tag);					
+					element.tagsManager('pushTag', tag);					
 				});
 			});
     	  
-	        $(element).attr('name', 'tags');
-	        $(element).tagsManager({
+	        element.attr('name', 'tags');
+	        element.tagsManager({
 	        	tagClass: 'tm-tag-info'
 	  	  	});
 	        
-	        $(element).parent().find('input[name="hidden-tags"]').on('change', function() {
+	        element.parent().find('input[name="hidden-tags"]').on('change', function() {
 	        	ignoreWatch = true;
-	        	scope.tags = $(element).tagsManager('tags');
+	        	
+	        	$timeout(function() {
+	        		scope.tags = element.tagsManager('tags');
+	        	})
 	        });
 		}
     };
-});
+}]);

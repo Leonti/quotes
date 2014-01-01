@@ -6,6 +6,8 @@ angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Qu
 		tags: []	
 	};
 	
+	$scope.tags = [];
+	
 	$scope.quote = angular.copy(scopeTemplate);
 	
 	$scope.addQuote = function() {
@@ -25,13 +27,11 @@ angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Qu
 	};
 	
 	$scope.updateQuote = function() {
-		userService.getUser().then(function(user) {
-			
-			quoteService.update($scope.quote).then(function() {
-				$rootScope.$emit('quoteUpdated');
-				resetForm();
-			});
-		});		
+	
+		quoteService.update($scope.quote).then(function() {
+			$rootScope.$emit('quoteUpdated');
+			resetForm();
+		});
 	};
 	
 	function resetForm() {
