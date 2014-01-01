@@ -1,6 +1,8 @@
 package com.leonti.quotes.modules;
 
 import com.google.inject.AbstractModule;
+import com.leonti.quotes.services.ImageService;
+import com.leonti.quotes.services.ImageServiceImpl;
 import com.leonti.quotes.services.QuoteService;
 import com.leonti.quotes.services.QuoteServiceImpl;
 import com.leonti.quotes.services.UserService;
@@ -15,5 +17,6 @@ public class ServiceModule extends AbstractModule {
 		bind(QuoteService.class).to(QuoteServiceImpl.class);
 		bind(WidgetService.class).to(WidgetServiceImpl.class);
 		bind(UserService.class).to(UserServiceImpl.class);
+		bind(ImageService.class).to(ImageServiceImpl.class);
 	}
 }
