@@ -7,7 +7,14 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 	
 	$scope.configsDefaults = {
 		image_width: 300,
-		image_height: 50
+		image_height: 50,
+		iframe_width: 300,
+		iframe_height: 70,		
+		iframe_css: 'div, span { background: yellow; }'
+	};
+	
+	$scope.getIframeUrl = function(widget) {
+		return '/resource/public/widget/' + widget.id + '/iframe/css/' + encodeURIComponent(widget.configs.iframe_css);
 	};
 	
 	$scope.widgetViews = {};
@@ -59,6 +66,9 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 				widget.configs = widget.configs || {};
 				widget.configs.image_width = widget.configs.image_width || $scope.configsDefaults.image_width;
 				widget.configs.image_height = widget.configs.image_height || $scope.configsDefaults.image_height;
+				widget.configs.iframe_width = widget.configs.iframe_width || $scope.configsDefaults.iframe_width;
+				widget.configs.iframe_height = widget.configs.iframe_height || $scope.configsDefaults.iframe_height;				
+				widget.configs.iframe_css = widget.configs.iframe_css || $scope.configsDefaults.iframe_css;
 			});
 			
 			$scope.widgets = widgets;

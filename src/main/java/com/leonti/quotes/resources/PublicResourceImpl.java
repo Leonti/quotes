@@ -44,4 +44,17 @@ public class PublicResourceImpl implements PublicResource {
 			}
 		};
 	}
+
+	@Override
+	public String getWidgetQuoteAsIframe(Long widgetId, String css) {
+		Quote quote = widgetService.getRandomQuoteForWidget(widgetId);
+		
+		String html = "<!doctype html><title></title><body>";
+		html += "<style>" + css + "</style>";
+		html += "<div id='content'>" + quote.getWhat() + "</div>";
+		html += "<span id='author'>" + quote.getWho() + "</span>";
+		html += "<span id='when'> " + (quote.getWhen() != null ? quote.getWhen() : "") + "</span>";
+		
+		return html;
+	}
 }

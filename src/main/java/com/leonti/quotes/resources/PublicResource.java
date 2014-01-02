@@ -22,4 +22,10 @@ public interface PublicResource {
 	@Produces("image/png")
 	public StreamingOutput getWidgetQuoteAsImage(
 			@PathParam("id") Long widgetId, @PathParam("width") int width,  @PathParam("height") int height);
+	
+	@GET
+	@Path("{id}/iframe/css/{css}")	
+	@Produces("text/html")
+	public String getWidgetQuoteAsIframe(
+			@PathParam("id") Long widgetId, @PathParam("css") String css);	
 }
