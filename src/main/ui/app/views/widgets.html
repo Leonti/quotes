@@ -1,18 +1,20 @@
-<div ng-controller="WidgetsCtrl">
+<div ng-controller="WidgetsCtrl" class="widget-list">
 	<div class="row" ng-repeat="widget in widgets">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-9" >
-					<strong>{{widget.name}}</strong> <br />
-					<span ng-show="widget.type == 'IDS'">{{widget.quoteIds.length}} quotes</span>
-					<span ng-show="widget.type == 'TAGS'">{{widget.tags.length}} tags</span>
-				</div>
-				<div class="col-md-2">
-					<span ng-click="toggleExpand(widget.id)" class="glyphicon" 
-					ng-class="{'glyphicon-expand': !isExpanded(widget.id), 'glyphicon-collapse-up': isExpanded(widget.id)}"></span>
-					<span ng-click="edit(widget)" class="glyphicon glyphicon-edit"></span>
-					<span ng-click="remove(widget.id)" class="glyphicon glyphicon-remove"></span>
-				</div>			
+				<div class="col-md-12" >
+					<div class="widget">
+						<strong>{{widget.name}}</strong> <br />
+						<span ng-show="widget.type == 'IDS'">{{widget.quoteIds.length}} quotes</span>
+						<span ng-show="widget.type == 'TAGS'">{{widget.tags.length}} tags</span>
+						<div class="buttons">
+							<span ng-click="toggleExpand(widget.id)" class="icon-button glyphicon" 
+							ng-class="{'glyphicon-expand': !isExpanded(widget.id), 'glyphicon-collapse-up': isExpanded(widget.id)}"></span>
+							<span ng-click="edit(widget)" class="icon-button glyphicon glyphicon-edit"></span>
+							<span ng-click="remove(widget.id)" class="icon-button glyphicon glyphicon-remove"></span>
+						</div>						
+					</div>
+				</div>		
 			</div>
 			<div class="row" ng-show="isExpanded(widget.id)">
 				<div class="col-md-12">

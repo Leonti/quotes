@@ -1,7 +1,13 @@
 'use strict';
 
 angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Quote', 'User', function ($scope, $rootScope, quoteService, userService) {
-	 
+	
+	$scope.isExpanded = false;
+	
+	$scope.showForm = function() {
+		$scope.isExpanded = true;
+	};
+	
 	var scopeTemplate = {
 		tags: []	
 	};
@@ -34,13 +40,19 @@ angular.module('uiApp').controller('QuoteFormCtrl', ['$scope', '$rootScope', 'Qu
 		});
 	};
 	
+	$scope.cancel = function() {
+		resetForm();
+	};
+	
 	function resetForm() {
 		$scope.quote = angular.copy(scopeTemplate);
 		$scope.quoteForm.$setPristine();
+		$scope.isExpanded = false;
 	}
 	  
 	$rootScope.$on('editQuote', function(event, data) {
 		$scope.quote = data.quote;
+		$scope.isExpanded = true;
 	});
 	
 }]);

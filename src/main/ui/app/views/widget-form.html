@@ -1,5 +1,6 @@
 <div ng-controller="WidgetFormCtrl">
-	<form novalidate name="widgetForm" role="form">
+	<button class="btn btn-primary" ng-show="!isExpanded" ng-click="showForm()">Create widget</button>
+	<form novalidate name="widgetForm" role="form" ng-show="isExpanded">
 		<div class="form-group" ng-class="{ 'has-error': widgetForm.name.$invalid && widgetForm.name.$dirty }">
 			<label class="control-label">Widget name:</label> <br/>
 			<input type="text" class="form-control" data-ng-model="widget.name" name="name" required placeholder="Name" />
@@ -10,14 +11,15 @@
 			<label><input type="radio" ng-model="widget.type" value="TAGS"> Random from tags</label> <br/>			
 		</div>
 		<div class="form-group">
-			<button class="btn" ng-show="widget.type == 'IDS'" 
+			<button class="btn btn-default" ng-show="widget.type == 'IDS'" 
 				ng-click="showQuotesPicker()"> {{widget.quoteIds.length}} quotes selected</button>
-			<button class="btn" ng-show="widget.type == 'TAGS'" 
+			<button class="btn btn-default" ng-show="widget.type == 'TAGS'" 
 				ng-click="showTagsPicker()">{{widget.tags.length}} tags selected</button>
 		</div>
-		<button class="btn btn-large btn-block btn-primary" type="button" ng-hide="widget.id" data-ng-click="addWidget()"
+		<button class="btn" ng-click="cancel()">Cancel</button>
+		<button class="btn btn-large btn-primary" type="button" ng-hide="widget.id" data-ng-click="addWidget()"
 			data-ng-disabled="widgetForm.$invalid">Add widget</button>
-		<button class="btn btn-large btn-block btn-primary" type="button" ng-show="widget.id" data-ng-click="updateWidget()"
+		<button class="btn btn-large btn-primary" type="button" ng-show="widget.id" data-ng-click="updateWidget()"
 			data-ng-disabled="widgetForm.$invalid">Save widget</button>					
 	</form>
 </div>

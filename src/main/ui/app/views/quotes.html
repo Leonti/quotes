@@ -1,17 +1,19 @@
-<div ng-controller="QuotesCtrl">
+<div ng-controller="QuotesCtrl" class="quote-list">
 	<div class="row" ng-repeat="quote in quotes">
-		<div class="col-md-11" >
-			<blockquote>
-			  	<p>{{quote.what}}</p>
-			  	<small>{{quote.who}}<span ng-show="quote.when">, {{formatDate(quote.when)}}</span></small>
-			  	<span ng-show="quote.tags.length > 0">Tags:
-					<i ng-repeat="tag in quote.tags">{{tag}} </i>
-			  	</span>	
-			</blockquote>
-		</div>
-		<div class="col-md-1">
-			<span ng-click="edit(quote)" class="glyphicon glyphicon-edit"></span>
-			<span ng-click="remove(quote.id)" class="glyphicon glyphicon-remove"></span>
+		<div class="col-md-12">
+			<div class="quote">
+				<blockquote>
+				  	<p>{{quote.what}}</p>
+				  	<small>{{quote.who}}<span ng-show="quote.when">, {{formatDate(quote.when)}}</span></small>
+				  	<span ng-show="quote.tags.length > 0">
+						<span class="label label-primary tag" ng-repeat="tag in quote.tags">{{tag}}<span>
+				  	</span>	
+				</blockquote>
+				<div class="buttons">
+					<span ng-click="edit(quote)" class="icon-button glyphicon glyphicon-edit"></span>
+					<span ng-click="remove(quote.id)" class="icon-button glyphicon glyphicon-remove"></span>
+				</div>							
+			</div>
 		</div>
 	</div>	
 </div>

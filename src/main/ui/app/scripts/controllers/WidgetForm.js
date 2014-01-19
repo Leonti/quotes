@@ -2,6 +2,12 @@
 
 angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'Widget', 'User', function ($scope, $rootScope, widgetService, userService) {
 
+	$scope.isExpanded = false;
+	
+	$scope.showForm = function() {
+		$scope.isExpanded = true;
+	};
+	
 	var widgetTemplate = {
 		type: 'IDS',
 		quoteIds: [],
@@ -30,6 +36,7 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 	
 	$rootScope.$on('editWidget', function(event, data) {
 		$scope.widget = data.widget;
+		$scope.isExpanded = true;
 	});	
 	
 	$scope.updateWidget = function() {
@@ -50,9 +57,14 @@ angular.module('uiApp').controller('WidgetFormCtrl', ['$scope', '$rootScope', 'W
 		});	  
 	};
 	
+	$scope.cancel = function() {
+		resetForm();
+	};
+	
 	function resetForm() {
 		$scope.widget = angular.copy(widgetTemplate);
-		$scope.widgetForm.$setPristine();		
+		$scope.widgetForm.$setPristine();
+		$scope.isExpanded = false;
 	}
 	  
 }]);

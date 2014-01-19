@@ -3,3 +3,37 @@
 .quote-form .tags {
 	/*display: block; */
 }
+
+.icon-button  {
+	font-size: xx-large;
+	cursor: pointer;
+}
+
+.nav {
+	margin-bottom: 20px;
+}
+
+.quote-list blockquote {
+	margin-bottom: 0;
+}
+
+.quote .tag {
+	margin-right: 10px;
+}
+
+.quote-list .quote,
+.widget-list .widget {
+	border-top: 1px solid #e6e6e6;
+	position: relative;
+}
+
+.quote-list .buttons,
+.widget-list .buttons {
+	position: absolute;
+	right: 0;
+	top: 10px;
+}
+
+.widget-list .widget {
+	padding: 10px;
+}

@@ -1,5 +1,7 @@
 <div class="row" ng-controller="HeaderCtrl">
-<button class="btn" data-ng-click="login()">Login</button>
-<button class="btn" data-ng-click="logout()">Logout</button>
-USER INFO: {{user}}
+	<div class="col-md-offset-10 col-md-2">
+		<br>
+		<button class="btn pull-right" ng-show="!user" data-ng-click="login()">Login</button>
+		<button class="btn pull-right" ng-show="user" data-ng-click="logout()">Logout</button>
+	</div>
 </div>

@@ -10,7 +10,18 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 		image_height: 50,
 		iframe_width: 300,
 		iframe_height: 70,		
-		iframe_css: 'div, span { background: yellow; }'
+		iframe_css: [
+             '#content {',
+             '    font-size: large;',
+             '}',
+             '#author, #when {',
+             '    font-size: small;',
+             '    font-style: italic;',
+             '}',
+             'div, span {',
+             '    background: transparent;',
+             '}'
+             ].join('\n')
 	};
 	
 	$scope.getIframeUrl = function(widget) {

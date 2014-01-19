@@ -1,6 +1,7 @@
 <div ng-controller="QuoteFormCtrl">
+		<button class="btn btn-primary" ng-show="!isExpanded" ng-click="showForm()">Create quote</button>
 		<div class="hero-unit">
-			<form novalidate name="quoteForm" role="form" class="quote-form">
+			<form novalidate name="quoteForm" role="form" class="quote-form" ng-show="isExpanded">
 				<div class="form-group" ng-class="{ 'has-error': quoteForm.what.$invalid && quoteForm.what.$dirty}">
 					<label class="control-label">What:</label>
 					<textarea class="form-control" rows = "5" data-ng-model="quote.what" name="what" required placeholder="The quote"></textarea>
@@ -17,9 +18,10 @@
 					<label>Tags:</label>
  					<input class="tags form-control" type="text" tagsmanager tags="quote.tags" placeholder="pretentious, funny, deep" />
 				</div>
-				<button class="btn btn-large btn-block btn-primary" type="button" ng-hide="quote.id" data-ng-click="addQuote()"
+				<button class="btn" ng-click="cancel()">Cancel</button>
+				<button class="btn btn-large btn-primary" type="button" ng-hide="quote.id" data-ng-click="addQuote()"
 					data-ng-disabled="quoteForm.$invalid">Add quote</button>
-				<button class="btn btn-large btn-block btn-primary" type="button" ng-show="quote.id" data-ng-click="updateQuote()"
+				<button class="btn btn-large btn-primary" type="button" ng-show="quote.id" data-ng-click="updateQuote()"
 					data-ng-disabled="quoteForm.$invalid">Save quote</button>							
 			</form>
 		</div>		
