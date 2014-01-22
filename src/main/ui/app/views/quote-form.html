@@ -1,5 +1,5 @@
 <div ng-controller="QuoteFormCtrl">
-		<button class="btn btn-primary" ng-show="!isExpanded" ng-click="showForm()">Create quote</button>
+		<button class="btn btn-primary pull-right" ng-show="!isExpanded" ng-click="showForm()">Create quote</button>
 		<div class="hero-unit">
 			<form novalidate name="quoteForm" role="form" class="quote-form" ng-show="isExpanded">
 				<div class="form-group" ng-class="{ 'has-error': quoteForm.what.$invalid && quoteForm.what.$dirty}">

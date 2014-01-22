@@ -1,5 +1,5 @@
 <div ng-controller="WidgetFormCtrl">
-	<button class="btn btn-primary" ng-show="!isExpanded" ng-click="showForm()">Create widget</button>
+	<button class="btn btn-primary pull-right" ng-show="!isExpanded" ng-click="showForm()">Create widget</button>
 	<form novalidate name="widgetForm" role="form" ng-show="isExpanded">
 		<div class="form-group" ng-class="{ 'has-error': widgetForm.name.$invalid && widgetForm.name.$dirty }">
 			<label class="control-label">Widget name:</label> <br/>

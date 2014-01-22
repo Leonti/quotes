@@ -24,6 +24,8 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
              ].join('\n')
 	};
 	
+	$scope.editConfigs = {};
+	
 	$scope.getIframeUrl = function(widget) {
 		return '/resource/public/widget/' + widget.id + '/iframe/css/' + encodeURIComponent(widget.configs.iframe_css);
 	};
@@ -39,6 +41,8 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 	};
 	
 	$scope.updateConfigs = function(widget) {
+		
+		widget.configs = angular.copy($scope.editConfigs[widget.id]);
 		widgetService.update(widget);
 	};
 	
@@ -74,12 +78,14 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 		widgetService.readAll().then(function(widgets) {
 			
 			_.each(widgets, function(widget) {
-				widget.configs = widget.configs || {};
-				widget.configs.image_width = widget.configs.image_width || $scope.configsDefaults.image_width;
-				widget.configs.image_height = widget.configs.image_height || $scope.configsDefaults.image_height;
-				widget.configs.iframe_width = widget.configs.iframe_width || $scope.configsDefaults.iframe_width;
-				widget.configs.iframe_height = widget.configs.iframe_height || $scope.configsDefaults.iframe_height;				
-				widget.configs.iframe_css = widget.configs.iframe_css || $scope.configsDefaults.iframe_css;
+				var editorConfig = angular.copy(widget.configs) || {};
+				editorConfig.image_width = editorConfig.image_width || $scope.configsDefaults.image_width;
+				editorConfig.image_height = editorConfig.image_height || $scope.configsDefaults.image_height;
+				editorConfig.iframe_width = editorConfig.iframe_width || $scope.configsDefaults.iframe_width;
+				editorConfig.iframe_height = editorConfig.iframe_height || $scope.configsDefaults.iframe_height;				
+				editorConfig.iframe_css = editorConfig.iframe_css || $scope.configsDefaults.iframe_css;
+				
+				$scope.editConfigs[widget.id] = editorConfig;
 			});
 			
 			$scope.widgets = widgets;
