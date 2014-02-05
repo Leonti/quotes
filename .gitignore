@@ -5,3 +5,4 @@ target
 logs
 configuration.properties
 *.war
+log4j.xml

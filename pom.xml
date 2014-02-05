@@ -77,7 +77,11 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.logentries</groupId>
+			<artifactId>logentries-appender</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 
 		<!-- jackson -->
 		<dependency>
