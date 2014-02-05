@@ -42,14 +42,10 @@
 			<version>${jetty.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-servlets</artifactId>
-			<version>${jetty.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.eclipse.jetty.orbit</groupId>
 			<artifactId>javax.servlet</artifactId>
 			<version>3.0.0.v201112011016</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- testing -->

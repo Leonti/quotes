@@ -1,0 +1,7 @@
+mongo.db=quotes
+mongo.user=quotes
+mongo.password=some_password
+mongo.hostname=ds029828.mongolab.com
+mongo.port=29828
+
+persona.audience=http://quotes.leonti.me
