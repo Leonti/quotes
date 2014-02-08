@@ -1,4 +1,7 @@
 <div ng-controller="WidgetsCtrl" class="widget-list">
+	<div class="row" ng-hide="widgets.length > 0">
+		<h2>List of widgets is empty. Go ahead and create one!</h2>
+	</div>
 	<div class="row" ng-repeat="widget in widgets">
 		<div class="col-md-12">
 			<div class="row">

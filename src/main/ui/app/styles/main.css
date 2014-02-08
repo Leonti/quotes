@@ -1,9 +1,5 @@
 /* Will be compiled down to a single stylesheet with your sass files */
 
-.quote-form .tags {
-	/*display: block; */
-}
-
 .icon-button  {
 	font-size: xx-large;
 	cursor: pointer;
@@ -36,4 +32,8 @@
 
 .widget-list .widget {
 	padding: 10px;
+}
+
+.explanation {
+	margin-top: 20px;
 }

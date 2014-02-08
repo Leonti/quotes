@@ -6,30 +6,70 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
-			  <li ng-class="{active: view == 'quotes'}"><a href="#quotes" ng-click="setView('quotes')">Quotes</a></li>
-			  <li ng-class="{active: view == 'widgets'}"><a href="#widgets" ng-click="setView('widgets')">Widgets</a></li>
+				<li ng-class="{active: view == 'quotes'}"><a href="#quotes" ng-click="setView('quotes')">Quotes</a></li>
+				<li ng-class="{active: view == 'widgets'}"><a href="#widgets" ng-click="setView('widgets')">Widgets</a></li>
 			</ul>
-		</div>	
+		</div>
 	</div>
-	
+
 	<div class="row" ng-show="view == 'quotes'">
 		<div class="col-md-8">
-			<div ng-include="'views/quotes.html'" ></div>
+			<div ng-include="'views/quotes.html'"></div>
 		</div>
 		<div class="col-md-4">
 			<div ng-include="'views/quote-form.html'"></div>
-		</div>	
+		</div>
 	</div>
-	
+
 	<div class="row" ng-show="view == 'widgets'">
 		<div class="col-md-8">
 			<div ng-include="'views/widgets.html'"></div>
 		</div>
 		<div class="col-md-4">
 			<div ng-include="'views/widget-form.html'"></div>
-		</div>	
+		</div>
 	</div>
 </div>
-<div ng-hide="loggedIn">
-	Not logged in
+<div class="explanation" ng-hide="loggedIn">
+	<div class="jumbotron">
+		<h1>What is this?</h1>
+		<p>
+			Ever wanted to put an interesting quote on your website?<br> Well, this app solves just this problem and nothing else :)<br> You create a list of
+			your favorite quotes and get an <em>html</em> snippet to embed into your page<br>
+		</p>
+	</div>
+
+	<h1>How it works?</h1>
+	<div class="row">
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>1. Create a list of quotes</h3>
+					<p>
+						Add your favorite quotes to the list.<br> You can add tags to the quotes to filter them later.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>2. Create a widget</h3>
+					<p>Widget configures how the quote will look like on your site.<br>
+					Widget displays random quote from the list - you can have predefined list of quotes or just display random quote for certain tags.					
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>3. Embed the stuff</h3>
+					<p>After widget is configured you can use html code to put it in your site - it comes in two flavors - <em>iFrame</em> 
+					and <em>png</em> image. For iFrame you are in total control of how it's going to look like - css is editable in widget config.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
