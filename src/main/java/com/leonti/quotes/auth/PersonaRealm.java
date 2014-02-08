@@ -36,6 +36,8 @@ public class PersonaRealm extends AuthenticatingRealm {
 
 		String assertion = (String) token.getCredentials();
 		
+		System.err.println("assertion: " + assertion);
+		
 		String email = verify(assertion);
 		
 		// DEVELOPMENT ONLY

@@ -26,7 +26,7 @@ public class UserResourceImpl implements UserResource {
 		Subject currentUser = SecurityUtils.getSubject();
 
 		// DEVELOPMENT ONLY
-		currentUser.login(new PersonaToken("DEV ASSERTION"));
+		//currentUser.login(new PersonaToken("DEV ASSERTION"));
 		
 		String email = (String) currentUser.getPrincipal();
 		return userService.readByEmail(email);

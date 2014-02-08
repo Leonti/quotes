@@ -16,7 +16,9 @@ angular.module('uiApp')
 	  
 	  function onUserLoad(user) {
 		  $scope.user = user;
-		  $rootScope.$broadcast('userLoggedIn', user);
+		  if (user) {
+			  $rootScope.$broadcast('userLoggedIn', user);
+		  }
 	  }
 	  
 	  function onUserError(reason) {
