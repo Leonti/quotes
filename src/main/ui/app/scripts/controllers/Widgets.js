@@ -92,6 +92,8 @@ angular.module('uiApp').controller('WidgetsCtrl', ['$scope', '$rootScope', 'Widg
 		});		
 	}
 	
-	updateList();
+	$scope.$on('userLoggedIn', function() {		
+		updateList();
+	});
 	
 }]);

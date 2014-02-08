@@ -2,32 +2,34 @@
 <div ng-include="'views/quotes-picker.html'"></div>
 <div ng-include="'views/tags-picker.html'"></div>
 
-<div class="row">
-	<div class="col-md-12">
-		<ul class="nav nav-tabs">
-		  <li ng-class="{active: view == 'quotes'}"><a href="#quotes" ng-click="setView('quotes')">Quotes</a></li>
-		  <li ng-class="{active: view == 'widgets'}"><a href="#widgets" ng-click="setView('widgets')">Widgets</a></li>
-		</ul>
-	</div>	
-</div>
-
-<div class="row" ng-show="view == 'quotes'">
-	<div class="col-md-8">
-		<div ng-include="'views/quotes.html'" ></div>
+<div ng-show="loggedIn">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+			  <li ng-class="{active: view == 'quotes'}"><a href="#quotes" ng-click="setView('quotes')">Quotes</a></li>
+			  <li ng-class="{active: view == 'widgets'}"><a href="#widgets" ng-click="setView('widgets')">Widgets</a></li>
+			</ul>
+		</div>	
 	</div>
-	<div class="col-md-4">
-		<div ng-include="'views/quote-form.html'"></div>
-	</div>	
-</div>
-
-<div class="row" ng-show="view == 'widgets'">
-	<div class="col-md-8">
-		<div ng-include="'views/widgets.html'"></div>
+	
+	<div class="row" ng-show="view == 'quotes'">
+		<div class="col-md-8">
+			<div ng-include="'views/quotes.html'" ></div>
+		</div>
+		<div class="col-md-4">
+			<div ng-include="'views/quote-form.html'"></div>
+		</div>	
 	</div>
-	<div class="col-md-4">
-		<div ng-include="'views/widget-form.html'"></div>
-	</div>	
+	
+	<div class="row" ng-show="view == 'widgets'">
+		<div class="col-md-8">
+			<div ng-include="'views/widgets.html'"></div>
+		</div>
+		<div class="col-md-4">
+			<div ng-include="'views/widget-form.html'"></div>
+		</div>	
+	</div>
 </div>
-
-
-<div ng-include="'views/embed.html'" ng-show="showEmbed"></div>
+<div ng-hide="loggedIn">
+	Not logged in
+</div>

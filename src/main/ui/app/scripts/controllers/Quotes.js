@@ -66,6 +66,8 @@ angular.module('uiApp').controller('QuotesCtrl', ['$scope', '$rootScope', 'Quote
 		});		
 	}
 	
-	$scope.updateList();
+	$scope.$on('userLoggedIn', function() {		
+		$scope.updateList();
+	});
 	
 }]);

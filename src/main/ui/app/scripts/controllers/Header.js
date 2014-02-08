@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('uiApp')
-  .controller('HeaderCtrl', ['$scope', 'User', function ($scope, UserService) {
+  .controller('HeaderCtrl', ['$rootScope', '$scope', 'User', function ($rootScope, $scope, UserService) {
 	  
 	  UserService.getUser().then(onUserLoad, onUserError);
 	  
@@ -16,6 +16,7 @@ angular.module('uiApp')
 	  
 	  function onUserLoad(user) {
 		  $scope.user = user;
+		  $rootScope.$broadcast('userLoggedIn', user);
 	  }
 	  
 	  function onUserError(reason) {

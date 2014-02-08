@@ -42,7 +42,8 @@ angular.module('uiApp').controller('TagsCtrl', ['$scope', '$rootScope', 'Quote',
 			});
 		});		
 	}
-	
-	$scope.updateList();
+	$scope.$on('userLoggedIn', function() {		
+		$scope.updateList();
+	});
 	
 }]);
