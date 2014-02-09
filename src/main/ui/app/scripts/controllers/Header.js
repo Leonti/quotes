@@ -12,6 +12,7 @@ angular.module('uiApp')
 	  $scope.logout = function() {  
 		  UserService.logout();
 		  $scope.user = null;
+		  $rootScope.$broadcast('userLoggedOut');
 	  };
 	  
 	  function onUserLoad(user) {

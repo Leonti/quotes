@@ -7,6 +7,10 @@ angular.module('uiApp').controller('MainCtrl', ['$scope', '$window', function ($
 		$scope.loggedIn = true;
 	});
 	
+	$scope.$on('userLoggedOut', function() {
+		$scope.loggedIn = false;
+	});	
+	
 	$scope.view = 'quotes';
 	$scope.setView = function(view) {
 		$scope.view = view;
