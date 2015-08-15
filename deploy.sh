@@ -1,4 +1,5 @@
+#!/bin/bash
 version=$1
-docker pull leonti/quotes
-docker stop $(docker ps -a -q)
-docker run -p 80:8080 -d leonti/quotes:$version
+docker stop quotes
+docker rm quotes
+docker run -p 8080:8080 -v /root/.quotes:/home/jetty/.quotes --name quotes -d leonti/quotes:$version
